@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_account"
+            android:title="Профиль" />
+        <item
+            android:id="@+id/nav_kanji"
+            android:icon="@drawable/ic_menu_kanji"
+            android:title="Словарь" />
+
+        <item
+            android:id="@+id/nav_hiragana"
+            android:icon="@drawable/ic_menu_hiragana"
+            android:title="Хирагана" />
+        <item
+            android:id="@+id/nav_katakana"
+            android:icon="@drawable/ic_menu_katakana"
+            android:title="Катакана" />
+        <item
+            android:id="@+id/nav_bookmark"
+            android:icon="@drawable/ic_bookmark"
+            android:title="Закладки" />
+    </group>
+
+    <item android:title="Связь">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Поделиться" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Отправить" />
+        </menu>
+    </item>
+    <item android:title="Остальное">
+        <menu>
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/ic_help"
+                android:title="Помощь" />
+            <item
+                android:id="@+id/nav_rate"
+                android:icon="@drawable/ic_comment"
+                android:title="Оценить приложение" />
+        </menu>
+    </item>
+</menu>

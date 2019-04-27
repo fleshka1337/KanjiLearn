@@ -54,45 +54,50 @@ public class MainActivity extends AppCompatActivity
         detailFragment  = new DetailFragment();
         //goToFragment(dictionaryFragment, true);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, dictionaryFragment)
-                .addToBackStack(null).show(dictionaryFragment)
-                .detach(dictionaryFragment).attach(dictionaryFragment).commit();
+        getSupportFragmentManager().beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .replace(R.id.fragment_container, dictionaryFragment)
+                .addToBackStack(null)
+                .show(dictionaryFragment)
+                .detach(dictionaryFragment)
+                .attach(dictionaryFragment)
+                .commit();
 
-        dictionaryFragment.setOnFragmentListener(new FragmentListener() {
-            @Override
-            public void onItemClick(String value) {
-                Toast.makeText(MainActivity.this, value, Toast.LENGTH_SHORT).show();
-                Fragment selectedFragment = null;
-                selectedFragment = new DetailFragment();
-                getSupportFragmentManager().beginTransaction().
-                        replace(R.id.fragment_container, ((DetailFragment) selectedFragment).getNewInstance(value)).
-                        addToBackStack(null).
-                        detach(selectedFragment).attach(selectedFragment).commit();
-
-                //new DetailFragment();
-                //goToFragment(new DetailFragment(), false);
-                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, detailFragment).commit();
-
-            }
-        });
-
-        bookmarkFragment.setOnFragmentListener(new FragmentListener() {
-            @Override
-            public void onItemClick(String value) {
-                Toast.makeText(MainActivity.this, value, Toast.LENGTH_SHORT).show();
-
-                Fragment selectedFragment = null;
-                selectedFragment = new DetailFragment();
-
-                getSupportFragmentManager().beginTransaction().
-                        replace(R.id.fragment_container, ((DetailFragment) selectedFragment).getNewInstance(value)).
-                        addToBackStack(null).
-                        detach(selectedFragment).attach(selectedFragment).commit();
-
-                //new DetailFragment();
-                //goToFragment(new DetailFragment(), false);
-            }
-        });
+//        dictionaryFragment.setOnFragmentListener(new FragmentListener() {
+//            @Override
+//            public void onItemClick(String value) {
+//                Toast.makeText(MainActivity.this, value, Toast.LENGTH_SHORT).show();
+//                Fragment selectedFragment = null;
+//                selectedFragment = new DetailFragment();
+//                getSupportFragmentManager().beginTransaction().
+//                        replace(R.id.fragment_container, ((DetailFragment) selectedFragment).getNewInstance(value)).
+//                        addToBackStack(null).
+//                        detach(selectedFragment).attach(selectedFragment).commit();
+//
+//                //new DetailFragment();
+//                //goToFragment(new DetailFragment(), false);
+//                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, detailFragment).commit();
+//
+//            }
+//        });
+//
+//        bookmarkFragment.setOnFragmentListener(new FragmentListener() {
+//            @Override
+//            public void onItemClick(String value) {
+//                Toast.makeText(MainActivity.this, value, Toast.LENGTH_SHORT).show();
+//
+//                Fragment selectedFragment = null;
+//                selectedFragment = new DetailFragment();
+//
+//                getSupportFragmentManager().beginTransaction().
+//                        replace(R.id.fragment_container, ((DetailFragment) selectedFragment).getNewInstance(value)).
+//                        addToBackStack(null).
+//                        detach(selectedFragment).attach(selectedFragment).commit();
+//
+//                //new DetailFragment();
+//                //goToFragment(new DetailFragment(), false);
+//            }
+//        });
 
 
 
@@ -147,8 +152,9 @@ public class MainActivity extends AppCompatActivity
                 selectedFragment = new BookmarkFragment();
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
-                addToBackStack(null).show(selectedFragment).
-                detach(selectedFragment).attach(selectedFragment).commit();
+                addToBackStack(null).show(selectedFragment)
+                .detach(selectedFragment).attach(selectedFragment)
+                .commit();
 
 //        if (id == R.id.nav_kanji){
 //            goToFragment(dictionaryFragment, false);
@@ -173,15 +179,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        String s="";
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
-            s = "ORIENTATION_LANDSCAPE\n";
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            s = "ORIENTATION_PORTRAIT\n";
-        }
-        s +="onConfigurationChanged() was called "+((Save)getApplicationContext()).ap()+"times";
-        Toast.makeText(this,s,Toast.LENGTH_LONG).show();
+//        super.onConfigurationChanged(newConfig);
+//        String s="";
+//        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+//            s = "ORIENTATION_LANDSCAPE\n";
+//        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+//            s = "ORIENTATION_PORTRAIT\n";
+//        }
+//        s +="onConfigurationChanged() was called "+((Save)getApplicationContext()).ap()+"times";
+//        Toast.makeText(this,s,Toast.LENGTH_LONG).show();
 
     }
 }

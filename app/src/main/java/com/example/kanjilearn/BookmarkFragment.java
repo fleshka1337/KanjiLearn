@@ -49,8 +49,8 @@ public class BookmarkFragment extends Fragment {
 //                    listener.onItemClick(value);
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.fragment_container, new DetailFragment()).addToBackStack(null);
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.replace(R.id.fragment_container, new DetailFragment()).addToBackStack(null);
                 transaction.commit();
             }
         });

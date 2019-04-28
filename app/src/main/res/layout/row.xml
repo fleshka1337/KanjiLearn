@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="10dp">
 
     <!--Создаем макет для customListView-->
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewKanji"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="1dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <LinearLayout
@@ -23,19 +23,27 @@
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="24dp"
-            android:layout_margin="3dp"
+            android:layout_height="22dp"
+            android:layout_margin="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="left"
             android:text="Main Text"
             android:textColor="#616161"
-            android:textSize="20sp"
-            android:textStyle="normal" />
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:paddingLeft="5dp"
+            android:id="@+id/textView1"/>
+
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:layout_margin="3dp"
+            android:layout_height="34dp"
+            android:layout_margin="5dp"
+            android:paddingLeft="5dp"
             android:text="Infomation"
-            android:textSize="14sp"
-            android:textColor="#a9a9a9" />
+            android:textColor="#a9a9a9"
+            android:layout_gravity="left"
+            android:textSize="12sp" />
     </LinearLayout>
 
 </LinearLayout>

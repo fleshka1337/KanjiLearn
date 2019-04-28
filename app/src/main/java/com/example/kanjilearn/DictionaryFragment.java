@@ -26,18 +26,18 @@ public class DictionaryFragment extends Fragment {
     ListView listView;
 
     String[] mTitle = {
-            "六",
-            "日",
-            "月"
-//            "百",
-//            "歳",
-//            "角",
-//            "大",
-//            "親",
-//            "第",
-//            "感",
-//            "本",
-//            "木",
+            "Шесть",
+            "Солнце",
+            "Луна",
+            "Сто",
+            "Возраст",
+            "Большой",
+            "Угол",
+            "Родители",
+            "Префикс числительных",
+            "Чувство, впечатление",
+            "Книга",
+            "Дерево",
 //            "分",
 //            "合",
 //            "週",
@@ -96,15 +96,43 @@ public class DictionaryFragment extends Fragment {
     };
 
     String mDescriprion[] = {
-            "Kanji one - SIX",
-            "Kanji two - DAY",
-            "Kajni three - MOON"
+            "Kun: む、 むい\n" +
+                    "On: ロク、 リク",
+            "Kun: ひ、 -び、 -か、 -け\n" +
+                    "On: ニチ、 ジツ",
+            "Kun: つき\n" +
+                    "On: ゲツ、 ガツ",
+            "Kun: もも\n" +
+                    "On: ヒャク、 ビャク",
+            "Kun: とし、 とせ、 よわい\n" +
+                    "On: サイ、 セイ",
+            "Kun: おお-、 おおきい\n" +
+                    "On: ダイ、 タイ",
+            "Kun: かど、 つの\n" +
+                    "On: カク",
+            "Kun: おや、した.しい\n" +
+                    "On: シン",
+            "On: ダイ、 テイ",
+            "On: カン",
+            "Kun: もと\n" +
+                    "On: ホン",
+            "Kun: き、 こ-\n" +
+                    "On: ボク、 モク"
     };
 
     int images[] = {
         R.drawable.ic_six,
         R.drawable.ic_day,
-        R.drawable.ic_moon
+        R.drawable.ic_moon,
+        R.drawable.ic_100,
+        R.drawable.ic_age,
+        R.drawable.ic_big,
+        R.drawable.ic_angle,
+        R.drawable.ic_parents,
+        R.drawable.ic_prefix,
+        R.drawable.ic_feeling,
+        R.drawable.ic_book,
+        R.drawable.ic_tree
     };
 
 

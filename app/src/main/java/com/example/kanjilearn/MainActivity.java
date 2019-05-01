@@ -150,6 +150,16 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_bookmark:
                 selectedFragment = new BookmarkFragment();
+                break;
+            case R.id.nav_hiragana:
+                Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);
+                break;
+            case R.id.nav_katakana:
+                Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);
+                break;
+            case R.id.nav_profile:
+                Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);
+                break;
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
                 addToBackStack(null).show(selectedFragment)

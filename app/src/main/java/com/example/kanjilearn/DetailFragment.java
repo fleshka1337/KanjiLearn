@@ -9,6 +9,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 
@@ -17,6 +20,8 @@ public class DetailFragment extends Fragment {
     private String value;
 
     DataCommunication mCallback;
+
+    private WebView webView;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -36,6 +41,7 @@ public class DetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_detail, container, false);
         // Inflate the layout for this fragment
 
 //        Bundle bundle = this.getArguments();
@@ -43,8 +49,13 @@ public class DetailFragment extends Fragment {
 //            String kanji = bundle.getString("kanji");
 //            Toast.makeText(getContext(),kanji,Toast.LENGTH_LONG).show();
 //        }
+        webView = (WebView)view.findViewById(R.id.webView);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webView.loadUrl("http://www.google.com");
+        webView.setWebViewClient(new WebViewClient());
 
-        return inflater.inflate(R.layout.fragment_detail, container, false);
+        return view;
     }
 
     @Override

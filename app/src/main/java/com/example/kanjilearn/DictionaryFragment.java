@@ -329,12 +329,14 @@ public class DictionaryFragment extends Fragment {
 
         listView = view.findViewById(R.id.dictionaryList);
 
-        MyAdapter adapter = new MyAdapter(getActivity(), mTitle, mDescriprion, images, mFind);
+        MyAdapter adapter = new MyAdapter(getActivity(), mTitle, mDescriprion, images);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                if (listener != null)
+                    listener.onItemClick(getListOfWords()[position]);
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -362,7 +364,7 @@ public class DictionaryFragment extends Fragment {
 //        });
     }
 
-//    String[] getListOfWords (){
+    String[] getListOfWords (){
         String[] mFind = {
                 "六",
                 "日",
@@ -431,8 +433,8 @@ public class DictionaryFragment extends Fragment {
                 "力",
                 "回"
         };
-//        return source;
-//    }
+        return mFind;
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -453,15 +455,15 @@ public class DictionaryFragment extends Fragment {
         String rTitle[];
         String rDescription[];
         int rImgs[];
-        String rFind[];
+//        String rFind[];
 
-        MyAdapter (Context c,String title[], String description[],int imgs[],String find[]){
+        MyAdapter (Context c,String title[], String description[],int imgs[]/*,String find[]*/){
             super(c, R.layout.row, R.id.textView1, title);
             this.context = c;
             this.rTitle = title;
             this.rDescription = description;
             this.rImgs = imgs;
-            this.rFind = find;
+            //this.rFind = find;
         }
 
         @NonNull
@@ -478,7 +480,7 @@ public class DictionaryFragment extends Fragment {
             //Установим наши ресурсы на view
             images.setImageResource(rImgs[position]);
             myTitle.setText(rTitle[position]);
-            myTitle.setTag(rFind[position]);
+//            myTitle.setTag(rFind[position]);
             myDescription.setText(rDescription[position]);
 
             return row;

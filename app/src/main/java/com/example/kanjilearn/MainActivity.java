@@ -16,7 +16,10 @@ import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, DataCommunication {
+
+    private String x;
+    private int y;
 
     DictionaryFragment dictionaryFragment;
     BookmarkFragment bookmarkFragment;
@@ -211,5 +214,29 @@ public class MainActivity extends AppCompatActivity
 //        s +="onConfigurationChanged() was called "+((Save)getApplicationContext()).ap()+"times";
 //        Toast.makeText(this,s,Toast.LENGTH_LONG).show();
 
+    }
+
+    @Override
+    public String getMyVariableX(){
+        //Get String
+        return x;
+    }
+
+    @Override
+    public void setMyVariableX(String x){
+        //Set String
+        this.x = x;
+    }
+
+    @Override
+    public int getMyVariableY(){
+        //Get int
+        return y;
+    }
+
+    @Override
+    public void setMyVariableY(int y){
+        //Set Int
+        this.y = y;
     }
 }

@@ -23,6 +23,8 @@ public class DictionaryFragment extends Fragment {
     private String value = "Hello!";
     private FragmentListener listener;
 
+    DataCommunication mCallback;
+
     ListView listView;
 
     String[] mTitle = {
@@ -335,8 +337,17 @@ public class DictionaryFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                if (listener != null)
-                    listener.onItemClick(getListOfWords()[position]);
+//                if (listener != null)
+//                    listener.onItemClick(getListOfWords()[position]);
+
+//                Bundle b = new Bundle();
+//                b.putString("Key", "Value11");
+//
+//                DetailFragment detailFragment = new DetailFragment();
+//                detailFragment.setArguments(b);
+
+                mCallback.setMyVariableX(getListOfWords()[position]);
+
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -439,6 +450,16 @@ public class DictionaryFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (DataCommunication) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement DataCommunication");
+        }
+
     }
 
     @Override
@@ -486,5 +507,6 @@ public class DictionaryFragment extends Fragment {
             return row;
         }
     }
+
 }
 

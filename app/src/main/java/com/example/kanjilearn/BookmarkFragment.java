@@ -19,6 +19,8 @@ public class BookmarkFragment extends Fragment {
     private String value = "Hello!!!";
     private FragmentListener listener;
 
+    DataCommunication mCallback;
+
     public BookmarkFragment() {
         // Required empty public constructor
     }
@@ -59,6 +61,14 @@ public class BookmarkFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (DataCommunication) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement DataCommunication");
+        }
     }
 
     @Override

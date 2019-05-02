@@ -1,6 +1,8 @@
 package com.example.kanjilearn;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -51,8 +54,14 @@ public class DetailFragment extends Fragment {
 //        }
         webView = (WebView)view.findViewById(R.id.webView);
         WebSettings webSettings = webView.getSettings();
+        webView.clearCache(true);
+
+//        ImageView myImage = (ImageView) view.findViewById(R.id.imageView2);
+//        myImage.setAlpha(55); //value: [0-255]. Where 0 is fully transparent and 255 is fully opaque
+
         webSettings.setJavaScriptEnabled(true);
-        webView.loadUrl("http://www.google.com");
+        webView.setBackgroundColor(Color.TRANSPARENT);
+        webView.loadUrl("https://figyshkin.github.io/"+mCallback.getMyVariableX()+".html");
         webView.setWebViewClient(new WebViewClient());
 
         return view;

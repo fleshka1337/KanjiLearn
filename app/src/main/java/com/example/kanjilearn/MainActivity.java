@@ -99,7 +99,19 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
 
-
+//        dictionaryFragment.setOnFragmentListener(new FragmentListener() {
+//            @Override
+//            public void onItemClick(String value) {
+//                Toast.makeText(MainActivity.this,value,Toast.LENGTH_LONG).show();
+//            }
+//        });
+//
+//        bookmarkFragment.setOnFragmentListener(new FragmentListener() {
+//            @Override
+//            public void onItemClick(String value) {
+//                Toast.makeText(MainActivity.this,value,Toast.LENGTH_LONG).show();
+//            }
+//        });
 
     }
 

@@ -329,7 +329,7 @@ public class DictionaryFragment extends Fragment {
 
         listView = view.findViewById(R.id.dictionaryList);
 
-        MyAdapter adapter = new MyAdapter(getActivity(), mTitle, mDescriprion, images);
+        MyAdapter adapter = new MyAdapter(getActivity(), mTitle, mDescriprion, images, mFind);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -363,75 +363,74 @@ public class DictionaryFragment extends Fragment {
     }
 
 //    String[] getListOfWords (){
-//        String[] source = new String[]{
-//                "六",
-//                "日",
-//                "月",
-//                "百",
-//                "歳",
-//                "角",
-//                "大",
-//                "親",
-//                "第",
-//                "感",
-//                "本",
-//                "木",
-//                "分",
-//                "合",
-//                "週",
-//                "十",
-//                "万",
-//                "千",
-//                "曜",
-//                "水",
-//                "火",
-//                "数",
-//                "今",
-//                "昨",
-//                "明",
-//                "望",
-//                "先",
-//                "五",
-//                "来",
-//                "見",
-//                "夜",
-//                "円",
-//                "秒",
-//                "一",
-//                "二",
-//                "三",
-//                "四",
-//                "七",
-//                "八",
-//                "九",
-//                "入",
-//                "出",
-//                "半",
-//                "方",
-//                "外",
-//                "父",
-//                "母",
-//                "亡",
-//                "友",
-//                "切",
-//                "肉",
-//                "当",
-//                "人",
-//                "気",
-//                "語",
-//                "自",
-//                "国",
-//                "間",
-//                "字",
-//                "金",
-//                "土",
-//                "何",
-//                "生",
-//                "田",
-//                "力",
-//                "回",
-//                "肉"
-//        };
+        String[] mFind = {
+                "六",
+                "日",
+                "月",
+                "百",
+                "歳",
+                "角",
+                "大",
+                "親",
+                "第",
+                "感",
+                "本",
+                "木",
+                "分",
+                "合",
+                "週",
+                "十",
+                "万",
+                "千",
+                "曜",
+                "水",
+                "火",
+                "数",
+                "今",
+                "昨",
+                "明",
+                "望",
+                "先",
+                "五",
+                "来",
+                "見",
+                "夜",
+                "円",
+                "秒",
+                "一",
+                "二",
+                "三",
+                "四",
+                "七",
+                "八",
+                "九",
+                "入",
+                "出",
+                "半",
+                "方",
+                "外",
+                "父",
+                "母",
+                "亡",
+                "友",
+                "切",
+                "肉",
+                "当",
+                "人",
+                "気",
+                "語",
+                "自",
+                "国",
+                "間",
+                "字",
+                "金",
+                "土",
+                "何",
+                "生",
+                "田",
+                "力",
+                "回"
+        };
 //        return source;
 //    }
 
@@ -454,19 +453,23 @@ public class DictionaryFragment extends Fragment {
         String rTitle[];
         String rDescription[];
         int rImgs[];
+        String rFind[];
 
-        MyAdapter (Context c,String title[], String description[],int imgs[]){
+        MyAdapter (Context c,String title[], String description[],int imgs[],String find[]){
             super(c, R.layout.row, R.id.textView1, title);
             this.context = c;
             this.rTitle = title;
             this.rDescription = description;
             this.rImgs = imgs;
+            this.rFind = find;
         }
 
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            LayoutInflater layoutInflater = (LayoutInflater)getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater layoutInflater = (LayoutInflater)getActivity()
+                    .getApplicationContext()
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row =layoutInflater.inflate(R.layout.row, parent,false);
             ImageView images = row.findViewById(R.id.imageViewKanji);
             TextView myTitle = row.findViewById(R.id.textView1);
@@ -475,6 +478,7 @@ public class DictionaryFragment extends Fragment {
             //Установим наши ресурсы на view
             images.setImageResource(rImgs[position]);
             myTitle.setText(rTitle[position]);
+            myTitle.setTag(rFind[position]);
             myDescription.setText(rDescription[position]);
 
             return row;

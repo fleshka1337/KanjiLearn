@@ -45,8 +45,8 @@ public class BookmarkFragment extends Fragment {
         myButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-//                if (listener!=null)
-//                    listener.onItemClick(value);
+                if (listener!=null)
+                    listener.onItemClick(value);
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);

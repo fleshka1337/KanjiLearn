@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction()
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .replace(R.id.fragment_container, dictionaryFragment)
-                .addToBackStack(null)
+//                .addToBackStack(null)
                 .show(dictionaryFragment)
                 .detach(dictionaryFragment)
                 .attach(dictionaryFragment)

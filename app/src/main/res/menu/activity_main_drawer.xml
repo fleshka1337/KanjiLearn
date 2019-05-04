@@ -10,7 +10,7 @@
             android:title="Профиль" />
         <item
             android:id="@+id/nav_kanji"
-            android:icon="@drawable/ic_menu_kanji"
+            android:icon="@drawable/ic_character"
             android:title="Словарь" />
 
         <item

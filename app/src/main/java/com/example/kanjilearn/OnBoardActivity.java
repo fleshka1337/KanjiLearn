@@ -42,7 +42,7 @@ public class OnBoardActivity extends TutorialActivity {
             addFragment(new Step.Builder().setTitle("Словарь")
                     .setContent("Мы создаём максимально подробную базу русскоязычного словаря, что позволит максимально подробно изучать иероглифы.")
                     .setBackgroundColor(Color.parseColor("#ADA996")) // int background color   #ADA996
-                    .setDrawable(R.drawable.background_one) // int top drawable
+                    .setDrawable(R.drawable.logo_one_v) // int top drawable
                     .setSummary("Немного о словаре")
                     .build());
 
@@ -50,7 +50,7 @@ public class OnBoardActivity extends TutorialActivity {
             addFragment(new Step.Builder().setTitle("Дополнительные возможности")
                     .setContent("В \"Kanji Learn\" можно создать свой профиль и отслеживать статистику изученных вами кандзи, синхронизировать закладки между всеми устройствами, а также мнгогое другое!")
                     .setBackgroundColor(Color.parseColor("#ADA996")) // int background color   #ADA996 !!!!
-                    .setDrawable(R.drawable.background_one) // int top drawable
+                    .setDrawable(R.drawable.logo_two_v) // int top drawable
                     .setSummary("Профиль и прочее")
                     .build());
         }

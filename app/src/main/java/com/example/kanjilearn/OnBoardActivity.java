@@ -39,19 +39,19 @@ public class OnBoardActivity extends TutorialActivity {
                     .build());
 
             // 2 fragment
-            addFragment(new Step.Builder().setTitle("This is header 2")
-                    .setContent("This is content 2")
+            addFragment(new Step.Builder().setTitle("Словарь")
+                    .setContent("Мы создаём максимально подробную базу русскоязычного словаря, что позволит максимально подробно изучать иероглифы.")
                     .setBackgroundColor(Color.parseColor("#ADA996")) // int background color   #ADA996
                     .setDrawable(R.drawable.background_one) // int top drawable
-                    .setSummary("This is summary 2")
+                    .setSummary("Немного о словаре")
                     .build());
 
             // 3 fragment
-            addFragment(new Step.Builder().setTitle("This is header")
-                    .setContent("This is content 3")
+            addFragment(new Step.Builder().setTitle("Дополнительные возможности")
+                    .setContent("В \"Kanji Learn\" можно создать свой профиль и отслеживать статистику изученных вами кандзи, синхронизировать закладки между всеми устройствами, а также мнгогое другое!")
                     .setBackgroundColor(Color.parseColor("#ADA996")) // int background color   #ADA996 !!!!
                     .setDrawable(R.drawable.background_one) // int top drawable
-                    .setSummary("This is summary")
+                    .setSummary("Профиль и прочее")
                     .build());
         }
         else {

@@ -31,26 +31,26 @@ public class OnBoardActivity extends TutorialActivity {
             setCancelText("Пропустить");
 
             // 1 fragment
-            addFragment(new Step.Builder().setTitle("This is header 1")
-                    .setContent("This is content 1")
-                    .setBackgroundColor(Color.parseColor("#ef5350")) // int background color   #f85032, #e73827,
-                    .setDrawable(R.drawable.ic_character) // int top drawable
-                    .setSummary("This is summary 1")
+            addFragment(new Step.Builder().setTitle("Добро пожаловать!")
+                    .setContent("\"Kanji Learn\""+" - это простой словарь японского языка, с удобным дизайном и функционалом, использующий данные из свободных источников.")
+                    .setBackgroundColor(Color.parseColor("#ADA996")) // int background color   #f85032, #e73827, ef473a, ef5350  #ADA996
+                    .setDrawable(R.drawable.background_one) // int top drawable
+                    .setSummary("Знакомство")
                     .build());
 
             // 2 fragment
             addFragment(new Step.Builder().setTitle("This is header 2")
                     .setContent("This is content 2")
-                    .setBackgroundColor(Color.parseColor("#cb2d3e")) // int background color
-                    .setDrawable(R.drawable.ic_second) // int top drawable
+                    .setBackgroundColor(Color.parseColor("#ADA996")) // int background color   #ADA996
+                    .setDrawable(R.drawable.background_one) // int top drawable
                     .setSummary("This is summary 2")
                     .build());
 
             // 3 fragment
             addFragment(new Step.Builder().setTitle("This is header")
                     .setContent("This is content 3")
-                    .setBackgroundColor(Color.parseColor("#ef473a")) // int background color
-                    .setDrawable(R.drawable.test_background) // int top drawable
+                    .setBackgroundColor(Color.parseColor("#ADA996")) // int background color   #ADA996 !!!!
+                    .setDrawable(R.drawable.background_one) // int top drawable
                     .setSummary("This is summary")
                     .build());
         }

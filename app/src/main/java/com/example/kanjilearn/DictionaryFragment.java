@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,8 +24,9 @@ public class DictionaryFragment extends Fragment {
     private String value = "Hello!";
     private FragmentListener listener;
 
-    DataCommunication mCallback;
 
+    DataCommunication mCallback;
+    EditText editText;
     ListView listView;
 
     String[] mTitle = {
@@ -328,6 +330,8 @@ public class DictionaryFragment extends Fragment {
 //                listener.onItemClick(value);
 //            }
 //        });
+
+        editText = view.findViewById(R.id.edit_search);
 
         listView = view.findViewById(R.id.dictionaryList);
 

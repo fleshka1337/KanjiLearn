@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity
     DictionaryFragment dictionaryFragment;
     BookmarkFragment bookmarkFragment;
     DetailFragment detailFragment;
+    ProfileFragment profileFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity
         dictionaryFragment = new DictionaryFragment();
         bookmarkFragment = new BookmarkFragment();
         detailFragment  = new DetailFragment();
+        profileFragment = new ProfileFragment();
         //goToFragment(dictionaryFragment, true);
 
         getSupportFragmentManager().beginTransaction()
@@ -173,8 +175,9 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);
                 break;
             case R.id.nav_profile:
-                Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);
+                selectedFragment = new ProfileFragment();
                 break;
+
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
                 addToBackStack(null).show(selectedFragment)

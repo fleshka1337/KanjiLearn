@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "387342348120",
+    "firebase_url": "https://kanjilearnwithfragments.firebaseio.com",
+    "project_id": "kanjilearnwithfragments",
+    "storage_bucket": "kanjilearnwithfragments.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387342348120:android:b3908213e66fb059",
+        "android_client_info": {
+          "package_name": "com.example.kanjilearn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387342348120-ivcnsacnjutct53t9ipn033hukgdcon4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kanjilearn",
+            "certificate_hash": "5bbde297a3de9a45f793e4c08a86a8c4200a3a49"
+          }
+        },
+        {
+          "client_id": "387342348120-qvq38eq1gnmsjrok7b0q98877ctddkai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdAamTCaH1kkwFBSqcDmLbB7uODEZR-jQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387342348120-qvq38eq1gnmsjrok7b0q98877ctddkai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

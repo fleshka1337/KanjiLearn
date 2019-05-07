@@ -38,7 +38,9 @@
                 android:selectAllOnFocus="true"
                 android:textColor="#000000"
                 android:textColorHint="#9b9a9a"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:maxLines="1"
+                android:inputType="text"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

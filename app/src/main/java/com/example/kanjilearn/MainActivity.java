@@ -1,5 +1,6 @@
 package com.example.kanjilearn;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -164,9 +165,17 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()){
             case R.id.nav_kanji:
                 selectedFragment = new DictionaryFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
+                        addToBackStack(null).show(selectedFragment)
+                        .detach(selectedFragment).attach(selectedFragment)
+                        .commit();
                 break;
             case R.id.nav_bookmark:
                 selectedFragment = new BookmarkFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
+                        addToBackStack(null).show(selectedFragment)
+                        .detach(selectedFragment).attach(selectedFragment)
+                        .commit();
                 break;
             case R.id.nav_hiragana:
                 Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);
@@ -175,14 +184,14 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);
                 break;
             case R.id.nav_profile:
-                selectedFragment = new ProfileFragment();
+                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                 break;
 
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
-                addToBackStack(null).show(selectedFragment)
-                .detach(selectedFragment).attach(selectedFragment)
-                .commit();
+//        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
+//                addToBackStack(null).show(selectedFragment)
+//                .detach(selectedFragment).attach(selectedFragment)
+//                .commit();
 
 //        if (id == R.id.nav_kanji){
 //            goToFragment(dictionaryFragment, false);

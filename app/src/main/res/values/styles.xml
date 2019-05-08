@@ -14,8 +14,14 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="MyTheme" parent="AppTheme">
-        <item name="android:windowBackground">@android:color/white</item>
+    <style name="AuthUI_Theme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/gradient_background</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorPrimaryDark">#a9a9a9</item>
     </style>
+
 
 </resources>

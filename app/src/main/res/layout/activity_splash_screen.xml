@@ -13,12 +13,14 @@
 
 
     <ImageView
+        android:id="@+id/splash_Image"
         android:layout_width="320dp"
         android:layout_height="320dp"
         android:layout_marginBottom="24dp"
         android:src="@drawable/logo_two_v" />
 
     <TextView
+        android:id="@+id/splash_Text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36sp"
@@ -29,6 +31,7 @@
         android:textStyle="bold" />
 
     <ProgressBar
+        android:id="@+id/splash_Progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36sp"

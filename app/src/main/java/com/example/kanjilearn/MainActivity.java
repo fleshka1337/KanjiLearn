@@ -172,11 +172,11 @@ public class MainActivity extends AppCompatActivity
                         .commit();
                 break;
             case R.id.nav_bookmark:
-//                selectedFragment = new BookmarkFragment();
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
-//                        addToBackStack(null).show(selectedFragment)
-//                        .detach(selectedFragment).attach(selectedFragment)
-//                        .commit();
+                selectedFragment = new BookmarkFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
+                        addToBackStack(null).show(selectedFragment)
+                        .detach(selectedFragment).attach(selectedFragment)
+                        .commit();
                 break;
             case R.id.nav_hiragana:
                 Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);

@@ -3,6 +3,8 @@ package com.example.kanjilearn;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +18,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import static android.content.Context.CONNECTIVITY_SERVICE;
 
 
 public class DetailFragment extends Fragment {
@@ -61,10 +65,32 @@ public class DetailFragment extends Fragment {
 
         webSettings.setJavaScriptEnabled(true);
         webView.setBackgroundColor(Color.TRANSPARENT);
-        webView.loadUrl("https://figyshkin.github.io/"+mCallback.getMyVariableX()+".html");
+        if (isNetworkAvailable()) {
+            //Online version
+            webView.loadUrl("https://figyshkin.github.io/" + mCallback.getMyVariableX() + ".html");
+        }
+        else {
+            //Offline version
+            webView.loadUrl("file:///android_asset/" + mCallback.getMyVariableX() + ".html");
+        }
         webView.setWebViewClient(new WebViewClient());
 
         return view;
+    }
+
+    public boolean isNetworkAvailable() {
+        // Get Connectivity Manager class object from Systems Service
+        ConnectivityManager cm = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        // Get Network Info from connectivity Manager
+        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+
+        // if no network is available networkInfo will be null
+        // otherwise check if we are connected
+        if (networkInfo != null && networkInfo.isConnected()) {
+            return true;
+        }
+        return false;
     }
 
     @Override

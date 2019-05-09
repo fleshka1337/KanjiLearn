@@ -33,24 +33,26 @@ public class OnBoardActivity extends TutorialActivity {
             // 1 fragment
             addFragment(new Step.Builder().setTitle("Добро пожаловать!")
                     .setContent("\"Kanji Learn\""+" - это простой словарь японского языка, с удобным дизайном и функционалом, использующий данные из свободных источников.")
-                    .setBackgroundColor(Color.parseColor("#ADA996")) // int background color   #f85032, #e73827, ef473a, ef5350  #ADA996
-                    .setDrawable(R.drawable.background_one) // int top drawable
+                    // Задний фон  - #f85032, #e73827, ef473a, ef5350  #ADA996
+                    .setBackgroundColor(Color.parseColor("#ADA996"))
+                    .setDrawable(R.drawable.background_one)
                     .setSummary("Знакомство")
                     .build());
 
             // 2 fragment
             addFragment(new Step.Builder().setTitle("Словарь")
                     .setContent("Мы создаём максимально подробную базу русскоязычного словаря, что позволит максимально подробно изучать иероглифы.")
-                    .setBackgroundColor(Color.parseColor("#ADA996")) // int background color   #ADA996
-                    .setDrawable(R.drawable.logo_one_v) // int top drawable
+                    .setBackgroundColor(Color.parseColor("#ADA996"))
+                    .setDrawable(R.drawable.logo_one_v)
                     .setSummary("Немного о словаре")
                     .build());
 
             // 3 fragment
             addFragment(new Step.Builder().setTitle("Дополнительные возможности")
                     .setContent("В \"Kanji Learn\" можно создать свой профиль и отслеживать статистику изученных вами кандзи, синхронизировать закладки между всеми устройствами, а также мнгогое другое!")
-                    .setBackgroundColor(Color.parseColor("#ADA996")) // int background color   #ADA996 !!!!
-                    .setDrawable(R.drawable.logo_two_v) // int top drawable
+                    // Задний фон  - #ADA996 !!!!
+                    .setBackgroundColor(Color.parseColor("#ADA996"))
+                    .setDrawable(R.drawable.logo_two_v)
                     .setSummary("Профиль и прочее")
                     .build());
         }

@@ -18,6 +18,9 @@ import android.view.MenuItem;
 import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, DataCommunication {
@@ -69,6 +72,11 @@ public class MainActivity extends AppCompatActivity
                 .detach(dictionaryFragment)
                 .attach(dictionaryFragment)
                 .commit();
+
+        TapTargetView.showFor(this,
+                TapTarget.forView(findViewById(R.id.edit_search), "Поиск", "Вы можете искать кандзи в этом поле (ромадзи, кунъёми, онъёми, кандзи)")
+                .tintTarget(false));
+
 
 //        dictionaryFragment.setOnFragmentListener(new FragmentListener() {
 //            @Override
@@ -252,6 +260,4 @@ public class MainActivity extends AppCompatActivity
         //Set Int
         this.y = y;
     }
-
-
 }

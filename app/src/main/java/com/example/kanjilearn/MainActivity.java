@@ -1,7 +1,9 @@
 package com.example.kanjilearn;
 
+import android.app.Application;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.PersistableBundle;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, DataCommunication {
@@ -33,8 +36,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -171,11 +172,11 @@ public class MainActivity extends AppCompatActivity
                         .commit();
                 break;
             case R.id.nav_bookmark:
-                selectedFragment = new BookmarkFragment();
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
-                        addToBackStack(null).show(selectedFragment)
-                        .detach(selectedFragment).attach(selectedFragment)
-                        .commit();
+//                selectedFragment = new BookmarkFragment();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
+//                        addToBackStack(null).show(selectedFragment)
+//                        .detach(selectedFragment).attach(selectedFragment)
+//                        .commit();
                 break;
             case R.id.nav_hiragana:
                 Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);
@@ -251,4 +252,6 @@ public class MainActivity extends AppCompatActivity
         //Set Int
         this.y = y;
     }
+
+
 }

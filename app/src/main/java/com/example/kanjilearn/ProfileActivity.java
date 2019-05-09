@@ -36,7 +36,32 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         sign_out = (Button)findViewById(R.id.sign_out);
+
+        //init providers
+        providers = Arrays.asList(
+                new AuthUI.IdpConfig.EmailBuilder().build(),
+                new AuthUI.IdpConfig.PhoneBuilder().build(),
+                new AuthUI.IdpConfig.GoogleBuilder().build()
+        );
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Profile_activity");
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if (user != null){
+            Toast.makeText(this,"Вы вошли в аккаунт",Toast.LENGTH_SHORT).show();
+            sign_out.setEnabled(true);
+        }
+        else
+            {
+                showSignInOptions();
+            }
 
         sign_out.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,20 +83,6 @@ public class ProfileActivity extends AppCompatActivity {
                 });
             }
         });
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Profile_activity");
-
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        //init providers
-        providers = Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build(),
-                new AuthUI.IdpConfig.PhoneBuilder().build(),
-                new AuthUI.IdpConfig.GoogleBuilder().build()
-        );
-        showSignInOptions();
     }
 
     private void showSignInOptions(){

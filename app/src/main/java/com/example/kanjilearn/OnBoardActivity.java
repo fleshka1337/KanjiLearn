@@ -60,7 +60,7 @@ public class OnBoardActivity extends TutorialActivity {
     }
     @Override
     public void finishTutorial() {
-        Intent intent = new Intent(OnBoardActivity.this, MainActivity.class);
+        Intent intent = new Intent(OnBoardActivity.this, SplashScreen.class);
         startActivity(intent);
 
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);

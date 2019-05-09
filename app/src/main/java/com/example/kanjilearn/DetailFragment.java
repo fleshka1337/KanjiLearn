@@ -67,7 +67,8 @@ public class DetailFragment extends Fragment {
         webView.setBackgroundColor(Color.TRANSPARENT);
         if (isNetworkAvailable()) {
             //Online version
-            webView.loadUrl("https://figyshkin.github.io/" + mCallback.getMyVariableX() + ".html");
+//            webView.loadUrl("https://figyshkin.github.io/" + mCallback.getMyVariableX() + ".html");
+            webView.loadUrl("file:///android_asset/" + mCallback.getMyVariableX() + ".html");
         }
         else {
             //Offline version
@@ -79,14 +80,14 @@ public class DetailFragment extends Fragment {
     }
 
     public boolean isNetworkAvailable() {
-        // Get Connectivity Manager class object from Systems Service
+        // Создаем ConnectivityManager
         ConnectivityManager cm = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        // Get Network Info from connectivity Manager
+        // Получаес информацию о состоянии сети
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
 
-        // if no network is available networkInfo will be null
-        // otherwise check if we are connected
+        // Если сеть недоступна, то она становится = null
+        // Проверка на подключение и вывод результата
         if (networkInfo != null && networkInfo.isConnected()) {
             return true;
         }
@@ -111,8 +112,6 @@ public class DetailFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        // This makes sure that the container activity has implemented
-        // the callback interface. If not, it throws an exception
         try {
             mCallback = (DataCommunication) context;
         } catch (ClassCastException e) {

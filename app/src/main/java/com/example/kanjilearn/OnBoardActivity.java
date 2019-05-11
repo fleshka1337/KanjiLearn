@@ -32,7 +32,7 @@ public class OnBoardActivity extends TutorialActivity {
 
             // 1 fragment
             addFragment(new Step.Builder().setTitle("Добро пожаловать!")
-                    .setContent("\"Kanji Learn\""+" - это простой словарь японского языка, с удобным дизайном и функционалом, использующий данные из свободных источников.")
+                    .setContent("\"Kanji Learn\""+" - это простой словарь японского языка с удобным дизайном и функционалом, использующий данные из свободных источников.")
                     // Задний фон  - #f85032, #e73827, ef473a, ef5350  #ADA996
                     .setBackgroundColor(Color.parseColor("#ADA996"))
                     .setDrawable(R.drawable.background_one)
@@ -49,7 +49,7 @@ public class OnBoardActivity extends TutorialActivity {
 
             // 3 fragment
             addFragment(new Step.Builder().setTitle("Дополнительные возможности")
-                    .setContent("В \"Kanji Learn\" можно создать свой профиль и отслеживать статистику изученных вами кандзи, синхронизировать закладки между всеми устройствами, а также мнгогое другое!")
+                    .setContent("В \"Kanji Learn\" можно создать свой профиль и отслеживать статистику изученных вами кандзи, синхронизировать закладки между всеми устройствами, а также многое другое!")
                     // Задний фон  - #ADA996 !!!!
                     .setBackgroundColor(Color.parseColor("#ADA996"))
                     .setDrawable(R.drawable.logo_two_v)

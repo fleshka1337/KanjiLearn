@@ -83,7 +83,7 @@ public class DetailFragment extends Fragment {
         // Создаем ConnectivityManager
         ConnectivityManager cm = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        // Получаес информацию о состоянии сети
+        // Получаем информацию о состоянии сети
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();
 
         // Если сеть недоступна, то она становится = null

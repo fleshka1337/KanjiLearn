@@ -12,9 +12,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import androidx.fragment.app.FragmentManager;
+
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.getkeepsafe.taptargetview.TapTarget;
@@ -31,6 +36,8 @@ public class MainActivity extends AppCompatActivity
     BookmarkFragment bookmarkFragment;
     DetailFragment detailFragment;
     ProfileFragment profileFragment;
+
+    EditText edit_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +83,24 @@ public class MainActivity extends AppCompatActivity
                 TapTarget.forView(findViewById(R.id.edit_search), "Поиск", "Вы можете искать кандзи в этом поле (ромадзи, кунъёми, онъёми, кандзи)")
                 .tintTarget(false));
 
+
+//        edit_search = findViewById(R.id.edit_search);
+//        edit_search.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                dictionaryFragment.filterValue(charSequence.toString());
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
 
 //        dictionaryFragment.setOnFragmentListener(new FragmentListener() {
 //            @Override

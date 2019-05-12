@@ -94,7 +94,7 @@ public class DetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         String test = mCallback.getMyVariableX();
-        Toast.makeText(getContext(),test,Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(),"Вы просматриваете - "+test,Toast.LENGTH_LONG).show();
 
 //        Bundle b = this.getArguments();
 //        if (b != null){

@@ -7,25 +7,35 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class DictionaryFragment extends Fragment {
 
     private String value = "Hello!";
     private FragmentListener listener;
 
-
     DataCommunication mCallback;
     EditText editText;
     ListView listView;
+
+    MyAdapter adapter;
+    MyAdapter myAdapter;
+    ArrayList<SingleRow> mylist;
 
     String[] mTitle = {
             "Шесть",
@@ -295,6 +305,75 @@ public class DictionaryFragment extends Fragment {
         R.drawable.ic_rotate
     };
 
+    String[] mFind = {
+            "六",
+            "日",
+            "月",
+            "百",
+            "歳",
+            "大",
+            "角",
+            "親",
+            "第",
+            "感",
+            "本",
+            "木",
+            "分",
+            "合",
+            "週",
+            "十",
+            "万",
+            "千",
+            "曜",
+            "水",
+            "火",
+            "数",
+            "今",
+            "昨",
+            "明",
+            "望",
+            "先",
+            "五",
+            "来",
+            "見",
+            "夜",
+            "円",
+            "秒",
+            "一",
+            "二",
+            "三",
+            "四",
+            "七",
+            "八",
+            "九",
+            "入",
+            "出",
+            "半",
+            "方",
+            "外",
+            "父",
+            "母",
+            "亡",
+            "友",
+            "切",
+            "肉",
+            "当",
+            "人",
+            "気",
+            "語",
+            "自",
+            "国",
+            "間",
+            "字",
+            "金",
+            "土",
+            "何",
+            "生",
+            "田",
+            "力",
+            "回"
+    };
+
 
     public DictionaryFragment() {
         // Required empty public constructor
@@ -314,7 +393,22 @@ public class DictionaryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_dictionary, container, false);
+        View view = inflater.inflate(R.layout.fragment_dictionary, container, false);
+
+        editText = (EditText)view.findViewById(R.id.edit_search);
+        listView = (ListView)view.findViewById(R.id.dictionaryList);
+        mylist = new ArrayList<>();
+        SingleRow singleRow;
+
+        for (int i = 0;i<mFind.length;i++){
+            singleRow = new SingleRow(mTitle[i],mDescriprion[i],images[i]);
+            mylist.add(singleRow);
+        }
+
+        myAdapter = new MyAdapter(getActivity(),mylist);
+        listView.setAdapter(myAdapter);
+
+        return view;
     }
 
     @Override
@@ -329,12 +423,11 @@ public class DictionaryFragment extends Fragment {
 //            }
 //        });
 
-        editText = view.findViewById(R.id.edit_search);
+//        editText = view.findViewById(R.id.edit_search);
+//        listView = view.findViewById(R.id.dictionaryList);
 
-        listView = view.findViewById(R.id.dictionaryList);
-
-        MyAdapter adapter = new MyAdapter(getActivity(), mTitle, mDescriprion, images);
-        listView.setAdapter(adapter);
+//        adapter = new MyAdapter(getActivity(), mTitle, mDescriprion, images);
+//        listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -376,6 +469,17 @@ public class DictionaryFragment extends Fragment {
 //            }
 //        });
     }
+
+//    public void filterValue(String value){
+//        //adapter.getFilter().filter(value);
+//        int size = adapter.getCount();
+//        for (int i = 0; i<size;i++){
+//            if (adapter.getItem(i).startsWith(value)){
+//                listView.setSelection(i);
+//                break;
+//            }
+//        }
+//    }
 
     String[] getListOfWords (){
         String[] mFind = {
@@ -473,42 +577,42 @@ public class DictionaryFragment extends Fragment {
         this.listener = listener;
     }
 
-    class MyAdapter extends ArrayAdapter<String> {
-        Context context;
-        String rTitle[];
-        String rDescription[];
-        int rImgs[];
-//        String rFind[];
-
-        MyAdapter (Context c,String title[], String description[],int imgs[]/*,String find[]*/){
-            super(c, R.layout.row, R.id.textView1, title);
-            this.context = c;
-            this.rTitle = title;
-            this.rDescription = description;
-            this.rImgs = imgs;
-            //this.rFind = find;
-        }
-
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            LayoutInflater layoutInflater = (LayoutInflater)getActivity()
-                    .getApplicationContext()
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row =layoutInflater.inflate(R.layout.row, parent,false);
-            ImageView images = row.findViewById(R.id.imageViewKanji);
-            TextView myTitle = row.findViewById(R.id.textView1);
-            TextView myDescription = row.findViewById(R.id.textView2);
-
-            //Установим наши ресурсы на view
-            images.setImageResource(rImgs[position]);
-            myTitle.setText(rTitle[position]);
-//            myTitle.setTag(rFind[position]);
-            myDescription.setText(rDescription[position]);
-
-            return row;
-        }
-    }
+//    class MyAdapter extends ArrayAdapter<String> {
+//        Context context;
+//        String rTitle[];
+//        String rDescription[];
+//        int rImgs[];
+////        String rFind[];
+//
+//        MyAdapter (Context c,String title[], String description[],int imgs[]/*,String find[]*/){
+//            super(c, R.layout.row, R.id.textView1, title);
+//            this.context = c;
+//            this.rTitle = title;
+//            this.rDescription = description;
+//            this.rImgs = imgs;
+//            //this.rFind = find;
+//        }
+//
+//        @NonNull
+//        @Override
+//        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+//            LayoutInflater layoutInflater = (LayoutInflater)getActivity()
+//                    .getApplicationContext()
+//                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//            View row =layoutInflater.inflate(R.layout.row, parent,false);
+//            ImageView images = row.findViewById(R.id.imageViewKanji);
+//            TextView myTitle = row.findViewById(R.id.textView1);
+//            TextView myDescription = row.findViewById(R.id.textView2);
+//
+//            //Установим наши ресурсы на view
+//            images.setImageResource(rImgs[position]);
+//            myTitle.setText(rTitle[position]);
+////            myTitle.setTag(rFind[position]);
+//            myDescription.setText(rDescription[position]);
+//
+//            return row;
+//        }
+//    }
 
 }
 

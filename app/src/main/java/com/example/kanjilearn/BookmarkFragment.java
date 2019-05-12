@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 import android.widget.Button;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.sergivonavi.materialbanner.Banner;
+import com.sergivonavi.materialbanner.BannerInterface;
+
 public class BookmarkFragment extends Fragment {
 
     private String value = "Hello!!!";

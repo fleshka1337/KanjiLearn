@@ -24,7 +24,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class DictionaryFragment extends Fragment {
+public class DictionaryFragment extends Fragment{
 
     private String value = "Hello!";
     private FragmentListener listener;
@@ -36,6 +36,25 @@ public class DictionaryFragment extends Fragment {
     MyAdapter adapter;
     MyAdapter myAdapter;
     ArrayList<SingleRow> mylist;
+
+    TextWatcher textWatcher = new TextWatcher() {
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            myAdapter.getFilter().filter(s);
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
+
 
     String[] mTitle = {
             "Шесть",
@@ -388,6 +407,7 @@ public class DictionaryFragment extends Fragment {
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -395,8 +415,26 @@ public class DictionaryFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_dictionary, container, false);
 
+        listView = view.findViewById(R.id.dictionaryList);
         editText = (EditText)view.findViewById(R.id.edit_search);
-        listView = (ListView)view.findViewById(R.id.dictionaryList);
+
+//        editText.addTextChangedListener(textWatcher);
+//        editText.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                myAdapter.getFilter().filter(charSequence);
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
         mylist = new ArrayList<>();
         SingleRow singleRow;
 
@@ -410,6 +448,23 @@ public class DictionaryFragment extends Fragment {
 
         return view;
     }
+
+
+//    @Override
+//    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//        myAdapter.getFilter().filter(charSequence);
+//        myAdapter.notifyDataSetChanged();
+//    }
+//
+//    @Override
+//    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//    }
+//
+//    @Override
+//    public void afterTextChanged(Editable editable) {
+//
+//    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -450,7 +505,6 @@ public class DictionaryFragment extends Fragment {
                 transaction.commit();
             }
         });
-
 
 //        ListView dictList = view.findViewById(R.id.dictionaryList);
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),

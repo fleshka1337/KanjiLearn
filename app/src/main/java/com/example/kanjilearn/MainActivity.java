@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity
 
     EditText edit_search;
 
+    MyAdapter myAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

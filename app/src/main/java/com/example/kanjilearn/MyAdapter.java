@@ -5,15 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends BaseAdapter {
+public class MyAdapter extends BaseAdapter implements Filterable {
 
     Context c;
     ArrayList<SingleRow> originalArray,tempArray;
+    CustomFilter cs;
+
     public MyAdapter(Context c, ArrayList<SingleRow> originalArray){
         this.c = c;
         this.originalArray = originalArray;
@@ -54,5 +58,47 @@ public class MyAdapter extends BaseAdapter {
         return i;
     }
 
+    @Override
+    public Filter getFilter() {
+        if (cs == null) {
+            cs = new CustomFilter();
+        }
+        return cs;
+    }
 
+    class CustomFilter extends Filter{
+
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            FilterResults results = new FilterResults();
+
+            if (charSequence != null && charSequence.length() > 0) {
+
+                charSequence = charSequence.toString().toUpperCase();
+                ArrayList<SingleRow> filters = new ArrayList<>();
+
+            for (int i = 0; i < tempArray.size(); i++) {
+                if (tempArray.get(i).getTitle().toUpperCase().contains(charSequence)) {
+                    SingleRow singleRow = new SingleRow(tempArray.get(i).getTitle(), tempArray.get(i).getDescription(), tempArray.get(i).getImage());
+                    filters.add(singleRow);
+                }
+            }
+            results.count = filters.size();
+            results.values = filters;
+        }
+            else
+            {
+                results.count = tempArray.size();
+                results.values = tempArray;
+            }
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            originalArray = (ArrayList<SingleRow>)filterResults.values;
+            notifyDataSetChanged();
+        }
+    }
 }

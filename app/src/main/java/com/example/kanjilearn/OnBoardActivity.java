@@ -1,16 +1,12 @@
 package com.example.kanjilearn;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.RadialGradient;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.Toast;
 
-import com.hololo.tutorial.library.PermissionStep;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+
 import com.hololo.tutorial.library.Step;
 import com.hololo.tutorial.library.TutorialActivity;
 

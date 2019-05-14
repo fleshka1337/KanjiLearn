@@ -10,4 +10,10 @@ public interface DataCommunication {
 
     public MyAdapter getMyAdapter ();
     public void setMyAdapter (ArrayList<SingleRow> adapterdada);
+
+    public void setMyMass (String[] mass);
+    public String[] getMyMass();
+
+    public void setMyMassInt (int[] massInt);
+    public int[] getMyMassInt();
 }

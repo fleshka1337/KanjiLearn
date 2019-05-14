@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity
 
     private String x;
     private int y;
+    private String[] mass = null;
+    private int[] massInt = null;
 
     DictionaryFragment dictionaryFragment;
     BookmarkFragment bookmarkFragment;
@@ -301,6 +303,24 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void setMyAdapter(ArrayList<SingleRow> adapterdada) {
         this.myAdapter = new MyAdapter(this, adapterdada);
+    }
+
+    @Override
+    public void setMyMass (String[] mass){
+        this.mass = mass;
+    }
+    @Override
+    public String[] getMyMass(){
+        return mass;
+    }
+
+    @Override
+    public void setMyMassInt (int[] massInt){
+        this.massInt = massInt;
+    }
+    @Override
+    public int[] getMyMassInt(){
+        return massInt;
     }
 
 //    @Override

@@ -21,8 +21,11 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static android.widget.Toast.LENGTH_LONG;
 
 public class DictionaryFragment extends Fragment{
 
@@ -500,8 +503,15 @@ public class DictionaryFragment extends Fragment{
 //
 //                DetailFragment detailFragment = new DetailFragment();
 //                detailFragment.setArguments(b);
+//                myAdapter.notifyDataSetChanged();
 
                 mCallback.setMyVariableX(getListOfWords()[position]);
+
+//                  mCallback.setMyVariableX(getListOfWords()[mCallback.getMyMassInt()[position]]);
+
+//                String[] kmJi = mCallback.getMyMass();
+//                mCallback.setMyVariableX(kmJi[position]);
+//                mCallback.setMyVariableX(mCallback.getMyMass()[position]);
 
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -613,7 +623,7 @@ public class DictionaryFragment extends Fragment{
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(Context context)  {
         super.onAttach(context);
 
         // This makes sure that the container activity has implemented

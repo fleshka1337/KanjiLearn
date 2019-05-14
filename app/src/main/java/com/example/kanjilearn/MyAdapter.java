@@ -79,13 +79,20 @@ public class MyAdapter extends BaseAdapter implements Filterable {
                 charSequence = charSequence.toString().toUpperCase();
                 ArrayList<SingleRow> filters = new ArrayList<>();
 
+//                String[] kData = null;
+//                int section = 0;
+//                String[] sectionDa = null;
+
             for (int i = 0; i < tempArray.size(); i++) {
                 if (tempArray.get(i).getTitle().toUpperCase().contains(charSequence)) {
                     SingleRow singleRow = new SingleRow(tempArray.get(i).getTitle()
                             , tempArray.get(i).getDescription()
                             , tempArray.get(i).getImage()
                             ,tempArray.get(i).getKanji());
+//                    filters.clear();
                     filters.add(singleRow);
+//                    kData[i]=tempArray.get(i).getKanji();
+
                 }
             }
             for (int i = 0; i < tempArray.size(); i++) {
@@ -94,7 +101,10 @@ public class MyAdapter extends BaseAdapter implements Filterable {
                                 , tempArray.get(i).getDescription()
                                 , tempArray.get(i).getImage()
                                ,tempArray.get(i).getKanji());
+//                        filters.clear();
                         filters.add(singleRow);
+ //                       kData[i]=tempArray.get(i).getKanji();
+
                     }
                 }
                 for (int i = 0; i < tempArray.size(); i++) {
@@ -103,13 +113,16 @@ public class MyAdapter extends BaseAdapter implements Filterable {
                                 , tempArray.get(i).getDescription()
                                 , tempArray.get(i).getImage()
                                 ,tempArray.get(i).getKanji());
+//                        filters.clear();
                         filters.add(singleRow);
+//                       kData[i]=tempArray.get(i).getKanji();
 
                     }
                 }
 
             results.count = filters.size();
             results.values = filters;
+//            mCallback.setMyMass(kData);
         }
             else
             {

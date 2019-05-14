@@ -5,11 +5,21 @@ public class SingleRow {
     String title;
     String description;
     int image;
+    String kanji;
 
-    public SingleRow(String title, String description,int image){
+    public String getKanji() {
+        return kanji;
+    }
+
+    public void setKanji(String kanji) {
+        this.kanji = kanji;
+    }
+
+    public SingleRow(String title, String description, int image, String kanji){
         this.title = title;
         this.description = description;
         this.image = image;
+        this.kanji = kanji;
     }
 
     public String getTitle() {
@@ -35,4 +45,6 @@ public class SingleRow {
     public void setImage(int image) {
         this.image = image;
     }
+
+
 }

@@ -13,7 +13,10 @@
         <item name="colorPrimaryDark">#ADA996</item>
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorPrimaryDark">#ef5350</item>
+        <item name="colorPrimary">#ef5350</item>
+    </style>
 
     <style name="AuthUI_Theme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/gradient_background</item>

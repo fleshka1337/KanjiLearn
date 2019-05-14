@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class MyAdapter extends BaseAdapter implements Filterable {
 
+    DataCommunication mCallback;
+
     Context c;
     ArrayList<SingleRow> originalArray,tempArray;
     CustomFilter cs;
@@ -79,10 +81,33 @@ public class MyAdapter extends BaseAdapter implements Filterable {
 
             for (int i = 0; i < tempArray.size(); i++) {
                 if (tempArray.get(i).getTitle().toUpperCase().contains(charSequence)) {
-                    SingleRow singleRow = new SingleRow(tempArray.get(i).getTitle(), tempArray.get(i).getDescription(), tempArray.get(i).getImage());
+                    SingleRow singleRow = new SingleRow(tempArray.get(i).getTitle()
+                            , tempArray.get(i).getDescription()
+                            , tempArray.get(i).getImage()
+                            ,tempArray.get(i).getKanji());
                     filters.add(singleRow);
                 }
             }
+            for (int i = 0; i < tempArray.size(); i++) {
+                    if (tempArray.get(i).getDescription().toUpperCase().contains(charSequence)) {
+                        SingleRow singleRow = new SingleRow(tempArray.get(i).getTitle()
+                                , tempArray.get(i).getDescription()
+                                , tempArray.get(i).getImage()
+                               ,tempArray.get(i).getKanji());
+                        filters.add(singleRow);
+                    }
+                }
+                for (int i = 0; i < tempArray.size(); i++) {
+                    if (tempArray.get(i).getKanji().toUpperCase().contains(charSequence)) {
+                        SingleRow singleRow = new SingleRow(tempArray.get(i).getTitle()
+                                , tempArray.get(i).getDescription()
+                                , tempArray.get(i).getImage()
+                                ,tempArray.get(i).getKanji());
+                        filters.add(singleRow);
+
+                    }
+                }
+
             results.count = filters.size();
             results.values = filters;
         }

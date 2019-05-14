@@ -1,16 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:tag="da">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:tag="da"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#ef5350"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_scrollFlags="scroll|enterAlways|snap">
+
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="0px"
+            android:layout_height="0px"
+            android:background="#ef5350"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/edit_search_dict"
+            android:layout_width="380dp"
+            android:layout_height="40dp"
+            android:text=""
+            android:background="@drawable/radius_edit_text"
+            android:drawableLeft="@drawable/ic_search"
+            android:drawablePadding="3dp"
+            android:hint="@string/search"
+            android:paddingLeft="5dp"
+            android:paddingRight="12dp"
+
+            android:selectAllOnFocus="true"
+            android:textColor="#000000"
+            android:textColorHint="#9b9a9a"
+            android:textSize="20dp"
+            android:maxLines="1"
+            android:inputType="text"/>
+
+
+
+    </androidx.appcompat.widget.Toolbar>
 
     <ListView
         android:id="@+id/dictionaryList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
     </ListView>
 
 
-</FrameLayout>
+</LinearLayout>

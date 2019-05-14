@@ -1,8 +1,10 @@
 package com.example.kanjilearn;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -13,6 +15,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -25,9 +28,11 @@ import android.widget.Toast;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, DataCommunication {
+        implements NavigationView.OnNavigationItemSelectedListener, DataCommunication, TextWatcher {
 
     private String x;
     private int y;
@@ -38,7 +43,7 @@ public class MainActivity extends AppCompatActivity
     ProfileFragment profileFragment;
 
     EditText edit_search;
-
+    DataCommunication mCallback;
     MyAdapter myAdapter;
 
     @Override
@@ -70,6 +75,7 @@ public class MainActivity extends AppCompatActivity
         bookmarkFragment = new BookmarkFragment();
         detailFragment  = new DetailFragment();
         profileFragment = new ProfileFragment();
+        mCallback = (DataCommunication) myAdapter;
         //goToFragment(dictionaryFragment, true);
 
         getSupportFragmentManager().beginTransaction()
@@ -81,9 +87,9 @@ public class MainActivity extends AppCompatActivity
                 .attach(dictionaryFragment)
                 .commit();
 
-        TapTargetView.showFor(this,
-                TapTarget.forView(findViewById(R.id.edit_search), "Поиск", "Вы можете искать кандзи в этом поле (ромадзи, кунъёми, онъёми, кандзи)")
-                .tintTarget(false));
+//        TapTargetView.showFor(this,
+//                TapTarget.forView(findViewById(R.id.edit_search), "Поиск", "Вы можете искать кандзи в этом поле (ромадзи, кунъёми, онъёми, кандзи)")
+//                .tintTarget(false));
 
 
 //        edit_search = findViewById(R.id.edit_search);
@@ -153,7 +159,8 @@ public class MainActivity extends AppCompatActivity
 //                Toast.makeText(MainActivity.this,value,Toast.LENGTH_LONG).show();
 //            }
 //        });
-
+//        edit_search = (EditText)findViewById(R.id.edit_search);
+//        edit_search.addTextChangedListener(this);
     }
 
     @Override
@@ -286,4 +293,41 @@ public class MainActivity extends AppCompatActivity
         //Set Int
         this.y = y;
     }
+
+    @Override
+    public MyAdapter getMyAdapter() {
+        return myAdapter;
+    }
+    @Override
+    public void setMyAdapter(ArrayList<SingleRow> adapterdada) {
+        this.myAdapter = new MyAdapter(this, adapterdada);
+    }
+
+//    @Override
+//    public void setMyAdapter (ArrayList<SingleRow> adapterdada){
+//
+//    }
+//
+//    @Override
+//    public MyAdapter getMyAdapter (){
+//        return
+//    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        //this.myAdapter.getFilter().filter(charSequence);
+        //mCallback.getMyAdapter().getFilter().filter(charSequence);
+
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
+    }
+
 }

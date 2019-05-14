@@ -69,6 +69,7 @@ public class DetailFragment extends Fragment {
             //Offline version
             webView.loadUrl("file:///android_asset/" + mCallback.getMyVariableX() + ".html");
         }
+
         webView.setWebViewClient(new WebViewClient());
 
         return view;

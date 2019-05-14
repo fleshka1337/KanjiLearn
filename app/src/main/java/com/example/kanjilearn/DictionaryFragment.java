@@ -414,11 +414,14 @@ public class DictionaryFragment extends Fragment{
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_dictionary, container, false);
+        View view2 = inflater.inflate(R.layout.app_bar_main, container, false);
 
         listView = view.findViewById(R.id.dictionaryList);
-        editText = (EditText)view.findViewById(R.id.edit_search);
+//        editText = view2.findViewById(R.id.edit_search);  !!!
 
-//        editText.addTextChangedListener(textWatcher);
+        editText = view.findViewById(R.id.edit_search_dict);
+
+        editText.addTextChangedListener(textWatcher);
 //        editText.addTextChangedListener(new TextWatcher() {
 //            @Override
 //            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -435,15 +438,17 @@ public class DictionaryFragment extends Fragment{
 //
 //            }
 //        });
+
         mylist = new ArrayList<>();
         SingleRow singleRow;
 
-        for (int i = 0;i<mFind.length;i++){
-            singleRow = new SingleRow(mTitle[i],mDescriprion[i],images[i]);
+        for (int i = 0;i<mTitle.length;i++){
+            singleRow = new SingleRow(mTitle[i],mDescriprion[i],images[i],mFind[i]);
             mylist.add(singleRow);
         }
 
         myAdapter = new MyAdapter(getActivity(),mylist);
+//        mCallback.setMyAdapter(mylist);
         listView.setAdapter(myAdapter);
 
         return view;

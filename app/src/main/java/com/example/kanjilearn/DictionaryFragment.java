@@ -44,14 +44,15 @@ public class DictionaryFragment extends Fragment{
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+            //myAdapter.getFilter().filter(s);
             myAdapter.getFilter().filter(s);
+            listView.setAdapter(myAdapter);
         }
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
         }
-
         @Override
         public void afterTextChanged(Editable s) {
 
@@ -505,7 +506,15 @@ public class DictionaryFragment extends Fragment{
 //                detailFragment.setArguments(b);
 //                myAdapter.notifyDataSetChanged();
 
-                mCallback.setMyVariableX(getListOfWords()[position]);
+                //mCallback.setMyVariableX(getListOfWords()[position]);
+
+                //myAdapter.getFilterList().get(position);
+                if (!editText.getText().toString().equals("")) {
+                    mCallback.setMyVariableX(myAdapter.getDataAd().get(position));
+                }
+                else
+                    mCallback.setMyVariableX(getListOfWords()[position]);
+
 
 //                  mCallback.setMyVariableX(getListOfWords()[mCallback.getMyMassInt()[position]]);
 

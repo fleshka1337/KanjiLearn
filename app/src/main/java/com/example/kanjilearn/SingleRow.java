@@ -1,5 +1,7 @@
 package com.example.kanjilearn;
 
+import java.util.ArrayList;
+
 public class SingleRow {
 
     String title;

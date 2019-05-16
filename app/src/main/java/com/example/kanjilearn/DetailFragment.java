@@ -60,6 +60,16 @@ public class DetailFragment extends Fragment {
 
         webSettings.setJavaScriptEnabled(true);
         webView.setBackgroundColor(Color.TRANSPARENT);
+//        if (isNetworkAvailable()) {
+//            //Online version
+////            webView.loadUrl("https://figyshkin.github.io/" + mCallback.getMyVariableX() + ".html");
+//            webView.loadUrl("file:///android_asset/" + mCallback.getMyVariableX() + ".html");
+//        }
+//        else {
+//            //Offline version
+//            webView.loadUrl("file:///android_asset/" + mCallback.getMyVariableX() + ".html");
+//        }
+
         if (isNetworkAvailable()) {
             //Online version
 //            webView.loadUrl("https://figyshkin.github.io/" + mCallback.getMyVariableX() + ".html");

@@ -27,7 +27,7 @@
 
         <EditText
             android:id="@+id/edit_search_dict"
-            android:layout_width="360dp"
+            android:layout_width="300dp"
             android:layout_height="40dp"
             android:text=""
             android:background="@drawable/radius_edit_text"
@@ -37,6 +37,9 @@
             android:paddingLeft="5dp"
             android:paddingRight="12dp"
 
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+
             android:selectAllOnFocus="true"
             android:textColor="#000000"
             android:textColorHint="#9b9a9a"
@@ -44,7 +47,18 @@
             android:maxLines="1"
             android:inputType="text"/>
 
-
+        <Button
+            android:id="@+id/button_search"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="Найти"
+            android:textSize="14dp"
+            android:textAlignment="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/radius_edit_text"
+            />
 
     </androidx.appcompat.widget.Toolbar>
 

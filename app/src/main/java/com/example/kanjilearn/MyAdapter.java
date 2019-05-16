@@ -20,6 +20,10 @@ public class MyAdapter extends BaseAdapter implements Filterable {
     ArrayList<SingleRow> originalArray,tempArray;
     CustomFilter cs;
 
+    ArrayList<SingleRow> finalfilters;
+
+    ArrayList<String> dataAd = new ArrayList<String>();
+
     public MyAdapter(Context c, ArrayList<SingleRow> originalArray){
         this.c = c;
         this.originalArray = originalArray;
@@ -68,10 +72,28 @@ public class MyAdapter extends BaseAdapter implements Filterable {
         return cs;
     }
 
+    public ArrayList<SingleRow> getFilterList()
+    {   if (cs == null){
+        cs = new CustomFilter();
+
+    }
+        return finalfilters;
+    }
+
+    public ArrayList<String> getDataAd(){
+        if (cs == null){
+            cs = new CustomFilter();
+        }
+        return dataAd;
+    }
+
     class CustomFilter extends Filter{
 
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
+
+            finalfilters = new ArrayList<>();
+
             FilterResults results = new FilterResults();
 
             if (charSequence != null && charSequence.length() > 0) {
@@ -92,6 +114,8 @@ public class MyAdapter extends BaseAdapter implements Filterable {
 //                    filters.clear();
                     filters.add(singleRow);
 //                    kData[i]=tempArray.get(i).getKanji();
+                    finalfilters=filters;
+                    dataAd.add(tempArray.get(i).getKanji());
 
                 }
             }
@@ -104,6 +128,8 @@ public class MyAdapter extends BaseAdapter implements Filterable {
 //                        filters.clear();
                         filters.add(singleRow);
  //                       kData[i]=tempArray.get(i).getKanji();
+                        finalfilters=filters;
+                        dataAd.add(tempArray.get(i).getKanji());
 
                     }
                 }
@@ -116,7 +142,8 @@ public class MyAdapter extends BaseAdapter implements Filterable {
 //                        filters.clear();
                         filters.add(singleRow);
 //                       kData[i]=tempArray.get(i).getKanji();
-
+                        finalfilters=filters;
+                        dataAd.add(tempArray.get(i).getKanji());
                     }
                 }
 
@@ -138,5 +165,13 @@ public class MyAdapter extends BaseAdapter implements Filterable {
             originalArray = (ArrayList<SingleRow>)filterResults.values;
             notifyDataSetChanged();
         }
+
+
+//        public String[] getListOfWords (){
+//            String[] mFind = null;
+//            return mFind;
+//        }
+
     }
+
 }

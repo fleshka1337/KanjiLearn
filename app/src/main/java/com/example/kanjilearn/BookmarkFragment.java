@@ -18,7 +18,6 @@ import com.sergivonavi.materialbanner.BannerInterface;
 public class BookmarkFragment extends Fragment {
 
     private String value = "Hello!!!";
-    private FragmentListener listener;
 
     DataCommunication mCallback;
 
@@ -48,8 +47,6 @@ public class BookmarkFragment extends Fragment {
         myButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                if (listener!=null)
-                    listener.onItemClick(value);
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -77,7 +74,7 @@ public class BookmarkFragment extends Fragment {
         super.onDetach();
     }
 
-    public void setOnFragmentListener(FragmentListener listener){
-        this.listener = listener;
-    }
+//    public void setOnFragmentListener(FragmentListener listener){
+//        this.listener = listener;
+//    }
 }

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -35,18 +36,22 @@ public class DictionaryFragment extends Fragment{
     DataCommunication mCallback;
     EditText editText;
     ListView listView;
+    Button buttonSearch;
 
     MyAdapter adapter;
     MyAdapter myAdapter;
     ArrayList<SingleRow> mylist;
+
+    CharSequence charr;
 
     TextWatcher textWatcher = new TextWatcher() {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             //myAdapter.getFilter().filter(s);
-            myAdapter.getFilter().filter(s);
-            listView.setAdapter(myAdapter);
+//            myAdapter.getFilter().filter(s);
+//            listView.setAdapter(myAdapter);
+            charr = s;
         }
 
         @Override
@@ -422,7 +427,7 @@ public class DictionaryFragment extends Fragment{
 
         listView = view.findViewById(R.id.dictionaryList);
 //        editText = view2.findViewById(R.id.edit_search);  !!!
-
+        buttonSearch = view.findViewById(R.id.button_search);
         editText = view.findViewById(R.id.edit_search_dict);
 
         editText.addTextChangedListener(textWatcher);
@@ -493,6 +498,14 @@ public class DictionaryFragment extends Fragment{
 //        adapter = new MyAdapter(getActivity(), mTitle, mDescriprion, images);
 //        listView.setAdapter(adapter);
 
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               myAdapter.getFilter().filter(charr);
+               listView.setAdapter(myAdapter);
+            }
+        });
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -515,7 +528,8 @@ public class DictionaryFragment extends Fragment{
                 else
                     mCallback.setMyVariableX(getListOfWords()[position]);
 
-
+                editText.setText("");
+                
 //                  mCallback.setMyVariableX(getListOfWords()[mCallback.getMyMassInt()[position]]);
 
 //                String[] kmJi = mCallback.getMyMass();

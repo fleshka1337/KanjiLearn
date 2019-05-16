@@ -24,6 +24,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
+
 import java.util.ArrayList;
 
 import static android.widget.Toast.LENGTH_LONG;
@@ -529,7 +532,7 @@ public class DictionaryFragment extends Fragment{
                     mCallback.setMyVariableX(getListOfWords()[position]);
 
                 editText.setText("");
-                
+
 //                  mCallback.setMyVariableX(getListOfWords()[mCallback.getMyMassInt()[position]]);
 
 //                String[] kmJi = mCallback.getMyMass();

@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity
                 .commit();
 
 //        TapTargetView.showFor(this,
-//                TapTarget.forView(findViewById(R.id.edit_search), "Поиск", "Вы можете искать кандзи в этом поле (ромадзи, кунъёми, онъёми, кандзи)")
+//                TapTarget.forView(findViewById(R.id.edit_search_dict), "Поиск", "Вы можете искать кандзи в этом поле (ромадзи, кунъёми, онъёми, кандзи)")
 //                .tintTarget(false));
 
 

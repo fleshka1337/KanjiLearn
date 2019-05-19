@@ -25,6 +25,7 @@
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="colorPrimaryDark">#a9a9a9</item>
+        <item name="colorAccent">@color/Grey</item>
     </style>
 
 </resources>

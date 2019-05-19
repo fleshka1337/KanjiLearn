@@ -47,6 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView text_get;
 
     String test;
+    String data;
 
     private FirebaseDatabase database;
     private DatabaseReference myRef;
@@ -130,13 +131,27 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("testData");
-                
+                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
 
-                //Map newPost = new HashMap();
-                //String data = newPost.get();
+                    current_user_db.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            String testData = dataSnapshot.child("testData").getValue(String.class);
+                            text_get.setText(testData);
+                            data = testData;
+                        }
 
-                //text_get.setText();
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                    //text_get.setText(data);
+                    //Map newPost = new HashMap();
+                    //String data = newPost.get();
+
+                    //text_get.setText();
+
             }
         });
 
@@ -169,6 +184,39 @@ public class ProfileActivity extends AppCompatActivity {
                 Toast.makeText(this,""+user.getEmail(),Toast.LENGTH_SHORT).show();
                 //set Button signout
                 sign_out.setEnabled(true);
+
+                String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+
+                current_user_db.child("testData");
+                current_user_db.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.getValue() == null) {
+                            String user_id_2 = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            DatabaseReference user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id_2);
+
+                            user_db.child("testData");
+                            //Забиваем информацию
+                            Map newPost = new HashMap();
+                            newPost.put("testData",0);
+
+                            //Отправляем в Firebase
+                            user_db.setValue(newPost);
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+//                Map newPost = new HashMap();
+//                newPost.put("testData",0);
+//
+//                current_user_db.setValue(newPost);
             }
             else
                 {

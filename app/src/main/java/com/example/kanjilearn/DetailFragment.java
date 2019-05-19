@@ -16,6 +16,17 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class DetailFragment extends Fragment {
 
@@ -72,6 +83,39 @@ public class DetailFragment extends Fragment {
 
         webView.setWebViewClient(new WebViewClient());
 
+        // Защита от краша при отсутствии авторизации
+        FirebaseUser user_check = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user_check != null) {
+
+            // Счетчик просмотренных иероглифов, с добавлением данных в Firebase
+            String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+            current_user_db.child("testData");
+            current_user_db.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.getValue() != null) {
+                        String user_id_2 = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        DatabaseReference user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id_2);
+                        user_db.child("testData");
+
+                        int testData = dataSnapshot.child("testData").getValue(Integer.class);
+                        testData++;
+                        Map newPost = new HashMap();
+                        newPost.put("testData",testData);
+
+                        user_db.setValue(newPost);
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
         return view;
     }
 

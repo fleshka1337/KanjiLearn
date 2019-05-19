@@ -178,11 +178,11 @@ public class ProfileActivity extends AppCompatActivity {
         if (requestCode == MY_REQUEST_CODE){
             IdpResponse response = IdpResponse.fromResultIntent(data);
             if (resultCode == RESULT_OK){
-                // get User
+                // Получаем пользователя
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                // Show Email on toast
+                // Показываем тост с Email
                 Toast.makeText(this,""+user.getEmail(),Toast.LENGTH_SHORT).show();
-                //set Button signout
+                //Изменяем кнопку sign_out
                 sign_out.setEnabled(true);
 
                 String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();

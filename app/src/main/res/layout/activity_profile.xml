@@ -33,6 +33,36 @@
             android:layout_gravity="center"
             android:enabled="false"/>
 
+        <EditText
+            android:id="@+id/edit_data_FB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"/>
+
+        <Button
+            android:id="@+id/test_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send_data_to_Firebase"
+            android:layout_gravity="center"
+            android:enabled="true"/>
+
+        <TextView
+            android:id="@+id/text_get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text=""
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/test_get"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="get_data_of_Firebase"
+            android:layout_gravity="center"
+            android:enabled="true"/>
+
     </LinearLayout>
 
 </FrameLayout>

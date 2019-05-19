@@ -81,41 +81,46 @@ public class DetailFragment extends Fragment {
             webView.loadUrl("file:///android_asset/" + mCallback.getMyVariableX() + ".html");
         }
 
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(new WebViewClient(){
 
-        // Защита от краша при отсутствии авторизации
-        FirebaseUser user_check = FirebaseAuth.getInstance().getCurrentUser();
+            public void onPageFinished(WebView view, String url) {
+                // Защита от краша при отсутствии авторизации
+                FirebaseUser user_check = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (user_check != null) {
+                if (user_check != null) {
 
-            // Счетчик просмотренных иероглифов, с добавлением данных в Firebase
-            String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
-            current_user_db.child("testData");
-            current_user_db.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.getValue() != null) {
-                        String user_id_2 = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        DatabaseReference user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id_2);
-                        user_db.child("testData");
+                    // Счетчик просмотренных иероглифов, с добавлением данных в Firebase
+                    String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+                    current_user_db.child("testData");
+                    current_user_db.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.getValue() != null) {
+                                String user_id_2 = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                DatabaseReference user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id_2);
+                                user_db.child("testData");
 
-                        int testData = dataSnapshot.child("testData").getValue(Integer.class);
-                        testData++;
-                        Map newPost = new HashMap();
-                        newPost.put("testData",testData);
+                                int testData = dataSnapshot.child("testData").getValue(Integer.class);
+                                testData++;
+                                Map newPost = new HashMap();
+                                newPost.put("testData",testData);
 
-                        user_db.setValue(newPost);
-                    }
+                                user_db.setValue(newPost);
+                            }
 
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
+            }
+        });
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
 
-                }
-            });
-        }
         return view;
     }
 

@@ -74,7 +74,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="I love fantastic things, colors and good design. I create the software that make lives better. Thanks"
+                                android:text="I love fantastic things, colors and good design. I create the software that makes lives better. Thanks"
                                 android:textAlignment="center"
                                 android:textStyle="italic"
                                 android:textSize="18sp"

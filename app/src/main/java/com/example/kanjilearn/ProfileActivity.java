@@ -11,9 +11,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.data.model.User;
@@ -46,8 +48,11 @@ public class ProfileActivity extends AppCompatActivity {
 
     TextView text_get;
 
+    ImageView img;
+
     String test;
-    String data;
+    String data, displayName;
+    long longData;
 
     private FirebaseDatabase database;
     private DatabaseReference myRef;
@@ -57,23 +62,24 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        database = FirebaseDatabase.getInstance();
+//        database = FirebaseDatabase.getInstance();
 //        myRef = database.getReference("item");
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        sign_out = (Button)findViewById(R.id.sign_out);
-        edit_data_FB = (EditText)findViewById(R.id.edit_data_FB);
-        text_get = (TextView)findViewById(R.id.text_get);
-        test_send = (Button)findViewById(R.id.test_send);
-        test_get = (Button)findViewById(R.id.test_get);
+//        sign_out = (Button)findViewById(R.id.sign_out);
+//        edit_data_FB = (EditText)findViewById(R.id.edit_data_FB);
+//        text_get = (TextView)findViewById(R.id.text_get);
+//        test_send = (Button)findViewById(R.id.test_send);
+//        test_get = (Button)findViewById(R.id.test_get);
+//        img = (ImageView)findViewById(R.id.imageView2);
 
         //init providers
-        providers = Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build(),
-                new AuthUI.IdpConfig.PhoneBuilder().build(),
-                new AuthUI.IdpConfig.GoogleBuilder().build()
-        );
+//        providers = Arrays.asList(
+//                new AuthUI.IdpConfig.EmailBuilder().build(),
+//                new AuthUI.IdpConfig.PhoneBuilder().build(),
+//                new AuthUI.IdpConfig.GoogleBuilder().build()
+//        );
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Profile_activity");
@@ -81,81 +87,93 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        if (user != null){
-            Toast.makeText(this,"Вы вошли в аккаунт",Toast.LENGTH_SHORT).show();
-            sign_out.setEnabled(true);
-        }
-        else
-            {
-                showSignInOptions();
-            }
+//        if (user != null){
+//            Toast.makeText(this,"Вы вошли в аккаунт",Toast.LENGTH_SHORT).show();
+//            sign_out.setEnabled(true);
+//        }
+//        else
+//            {
+//                showSignInOptions();
+//            }
 
-        sign_out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Logout
-                AuthUI.getInstance()
-                        .signOut(ProfileActivity.this)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                sign_out.setEnabled(false);
-                                showSignInOptions();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ProfileActivity.this,""+e.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
+//        sign_out.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //Logout
+//                AuthUI.getInstance()
+//                        .signOut(ProfileActivity.this)
+//                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<Void> task) {
+//                                sign_out.setEnabled(false);
+//                                showSignInOptions();
+//                            }
+//                        }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(ProfileActivity.this,""+e.getMessage(),Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//            }
+//        });
+//
+//
+//        test_send.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+//
+//                String testData = edit_data_FB.getText().toString();
+//
+//                Map newPost = new HashMap();
+//                newPost.put("testData",testData);
+//
+//                current_user_db.setValue(newPost);
+//            }
+//        });
+//
+//        test_get.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//                final DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+//
+//                    current_user_db.addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            long testData = dataSnapshot.child("testData").getValue(long.class);
+//                            //text_get.setText(testData);
+//                            longData = testData;
+//                            //text_get.setText(String.valueOf(longData));
+//                            String phone = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
+//                            if (FirebaseAuth.getInstance().getCurrentUser().getDisplayName() != null){
+//                                displayName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+//                            }
+//                            text_get.setText(displayName);
+//                            //String photoUrl = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString();
+//                            Glide.with(ProfileActivity.this)
+//                                    .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
+//                                    .into(img);
+//
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(DatabaseError databaseError) {
+//
+//                        }
+//                    });
 
-
-        test_send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
-
-                String testData = edit_data_FB.getText().toString();
-
-                Map newPost = new HashMap();
-                newPost.put("testData",testData);
-
-                current_user_db.setValue(newPost);
-            }
-        });
-
-        test_get.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
-
-                    current_user_db.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            String testData = dataSnapshot.child("testData").getValue(String.class);
-                            text_get.setText(testData);
-                            data = testData;
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
                     //text_get.setText(data);
                     //Map newPost = new HashMap();
                     //String data = newPost.get();
 
                     //text_get.setText();
 
-            }
-        });
-
-
+//            }
+//        });
+//
+//
     }
 
     private void showSignInOptions(){

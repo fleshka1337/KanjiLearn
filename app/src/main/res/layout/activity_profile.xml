@@ -29,6 +29,7 @@
                 android:layout_marginTop="30dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image_profile"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:src="@drawable/profile"
@@ -61,24 +62,26 @@
                                 android:id="@+id/nameView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Igor Korolev"
+                                android:text=""
                                 android:textStyle="bold"
                                 android:textSize="25sp"
                                 android:layout_marginTop="60dp"
                                 android:layout_gravity="center_horizontal"/>
 
                             <TextView
+                                android:id="@+id/yourProfile"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Ваш профиль"
+                                android:text=""
                                 android:textSize="17sp"
                                 android:layout_marginTop="10dp"
                                 android:layout_gravity="center_horizontal"/>
 
                             <TextView
+                                android:id="@+id/userInformation"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Номер телефона - \n Email - "
+                                android:text=""
                                 android:textAlignment="center"
                                 android:textStyle="italic"
                                 android:textSize="18sp"
@@ -89,7 +92,7 @@
                                 android:id="@+id/location_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="NA"
+                                android:text=""
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_marginTop="10dp"

@@ -60,12 +60,12 @@ public class ProfileActivity extends AppCompatActivity {
 
     EditText edit_data_FB;
 
-    TextView text_get, locationView, numberOfKanji, nameView;
+    TextView text_get, locationView, numberOfKanji, nameView, userInformation, yourProfile;
 
     ImageView img;
 
     //String test;
-    String data, displayName,  displayPhone;
+    String data, displayName,  displayPhone, displayEmail;
     long longData;
 
     private FirebaseDatabase database;
@@ -94,9 +94,11 @@ public class ProfileActivity extends AppCompatActivity {
 //        text_get = (TextView)findViewById(R.id.text_get);
 //        test_send = (Button)findViewById(R.id.test_send);
 //        test_get = (Button)findViewById(R.id.test_get);
-//        img = (ImageView)findViewById(R.id.imageView2);
+        img = (ImageView)findViewById(R.id.image_profile);
         numberOfKanji = (TextView)findViewById(R.id.number_of_kanji);
         nameView = (TextView)findViewById(R.id.nameView);
+        userInformation = (TextView)findViewById(R.id.userInformation);
+        yourProfile = (TextView)findViewById(R.id.yourProfile);
 
         test = (Button)findViewById(R.id.login_button);
         locationView = (TextView)findViewById(R.id.location_view);
@@ -252,6 +254,8 @@ public class ProfileActivity extends AppCompatActivity {
                 //Изменяем кнопку sign_out
                 sign_out.setEnabled(true);
 
+                setMaterials();
+
                 String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
 
@@ -391,9 +395,24 @@ public class ProfileActivity extends AppCompatActivity {
                 numberOfKanji.setText(String.valueOf(longData));
                 if (FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber() != null) {
                     displayPhone = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
+                } else {
+                    displayPhone = "Не укакзано";
                 }
                 if (FirebaseAuth.getInstance().getCurrentUser().getDisplayName() != null){
                    displayName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+                } else {
+                    displayName = "Не указано";
+                }
+                if (FirebaseAuth.getInstance().getCurrentUser().getEmail() != null){
+                    displayEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                } else
+                {
+                    displayEmail = "Не указано";
+                }
+                if (FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null){
+                    Glide.with(ProfileActivity.this)
+                            .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
+                            .into(img);
                 }
 //                text_get.setText(displayName);
                 //String photoUrl = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString();
@@ -401,7 +420,27 @@ public class ProfileActivity extends AppCompatActivity {
 //                Glide.with(ProfileActivity.this)
 //                        .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
 //                        .into(img);
+
+                userInformation.setText("Номер телефона - "+displayPhone+"\n Email - "+displayEmail);
+                yourProfile.setText("Ваш профиль");
                 nameView.setText(displayName);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED){
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1000);
+                }else {
+                    LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+                    Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                    try {
+                        String city = hereLocation(location.getLatitude(), location.getLongitude());
+                        String country = hereLocationCountry(location.getLatitude(), location.getLongitude());
+                        locationView.setText(city+", "+country);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                        Toast.makeText(ProfileActivity.this, "Метоположение не найдено", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
 
             }
 

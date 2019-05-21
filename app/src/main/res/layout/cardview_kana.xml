@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="81dp"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="70dp"
     android:layout_height="98dp"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
@@ -14,16 +15,16 @@
         <TextView
             android:id="@+id/kana_id"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="69dp"
             android:text="あ"
-            android:textSize="56sp"
+            android:textSize="46sp"
             android:gravity="center"/>
         
         <TextView
             android:id="@+id/title_id"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:textSize="24sp"
+            android:layout_height="25dp"
+            android:textSize="20sp"
             android:gravity="center"
             android:text="a"
             android:textColor="@color/colorTransparentWhite"/>

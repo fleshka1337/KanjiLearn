@@ -5,6 +5,8 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
@@ -14,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -27,6 +31,8 @@ public class HiraganaFragment extends Fragment {
 //
 //    TextToSpeech textToSpeech;
 
+    List<Card> lstCard;
+
     public HiraganaFragment() {
 
     }
@@ -37,6 +43,32 @@ public class HiraganaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_hiragana, container, false);
+
+        lstCard = new ArrayList<>();
+
+        lstCard.add(new Card("あ","a","ああ"));
+        lstCard.add(new Card("い","i","いい"));
+        lstCard.add(new Card("う","u","うう"));
+        lstCard.add(new Card("え","e","ええ"));
+        lstCard.add(new Card("お","o","おお"));
+
+        lstCard.add(new Card("か","ka","かあ"));
+        lstCard.add(new Card("き","ki","きい"));
+        lstCard.add(new Card("く","ku","くう"));
+        lstCard.add(new Card("け","ke","けえ"));
+        lstCard.add(new Card("こ","ko","こお"));
+
+        lstCard.add(new Card("さ","sa","さあ"));
+        lstCard.add(new Card("し","shi","しい"));
+        lstCard.add(new Card("す","su","すう"));
+        lstCard.add(new Card("せ","se","せえ"));
+        lstCard.add(new Card("そ","so","そお"));
+
+        RecyclerView myrv = (RecyclerView)view.findViewById(R.id.recyclerView_hiragana);
+        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getActivity(),lstCard);
+        myrv.setLayoutManager(new GridLayoutManager(getActivity(),5));
+        myrv.setAdapter(myAdapter);
+
 //
 //        //Init text to speech
 //        textToSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {

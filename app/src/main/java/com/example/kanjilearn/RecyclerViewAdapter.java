@@ -35,7 +35,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        
+        holder.card_Title.setText(mData.get(position).getKanaRead());
+        holder.card_Kana.setText(mData.get(position).getKana());
 
     }
 

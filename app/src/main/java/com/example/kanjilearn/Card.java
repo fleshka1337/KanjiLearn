@@ -4,13 +4,15 @@ public class Card {
 
     private String Kana;
     private String KanaRead;
+    private String KanaTTS;
 
     public Card (){
     }
 
-    public Card (String kana, String kanaRead){
+    public Card (String kana, String kanaRead, String kanaTTS){
         Kana = kana;
         KanaRead = kanaRead;
+        KanaTTS = kanaTTS;
     }
 
     public String getKana() {
@@ -27,5 +29,13 @@ public class Card {
 
     public void setKanaRead(String kanaRead) {
         KanaRead = kanaRead;
+    }
+
+    public void setKanaTTS(String kanaTTS) {
+        KanaTTS = kanaTTS;
+    }
+
+    public String getKanaTTS() {
+        return KanaTTS;
     }
 }

@@ -1,8 +1,10 @@
 package com.example.kanjilearn;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,22 +24,37 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+
+        View view;
+        LayoutInflater mInflater = LayoutInflater.from(mContext);
+        view = mInflater.inflate(R.layout.cardview_kana,parent,false);
+
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
+        
+
     }
 
     @Override
     public int getItemCount() {
-        return mData;
+        return mData.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
+
+        TextView card_Title;
+        TextView card_Kana;
+
+
         public MyViewHolder(View itemView) {
             super(itemView);
+
+            card_Title = (TextView)itemView.findViewById(R.id.title_id);
+            card_Kana = (TextView)itemView.findViewById(R.id.kana_id);
         }
     }
 

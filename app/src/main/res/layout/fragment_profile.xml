@@ -19,16 +19,15 @@
             android:text="PROFILE_FRAGMENT"
             android:gravity="center"/>
         <Button
-            android:id="@+id/sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Вход"
             android:layout_gravity="center" />
         <Button
-            android:id="@+id/sign_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Выход"
+            android:enabled="false"
             android:layout_gravity="center" />
 
     </LinearLayout>

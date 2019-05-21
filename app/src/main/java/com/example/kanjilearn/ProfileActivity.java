@@ -43,6 +43,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -54,16 +56,16 @@ public class ProfileActivity extends AppCompatActivity {
 
     private static final int MY_REQUEST_CODE = 9119;
     List<AuthUI.IdpConfig> providers;
-    Button    sign_out, log_in, test;
+    Button    sign_out, log_in,test;
 
     EditText edit_data_FB;
 
-    TextView text_get, locationView;
+    TextView text_get, locationView, numberOfKanji, nameView;
 
     ImageView img;
 
     //String test;
-    String data, displayName;
+    String data, displayName,  displayPhone;
     long longData;
 
     private FirebaseDatabase database;
@@ -74,25 +76,29 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        database = FirebaseDatabase.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         View view = findViewById(R.id.view);
         AnimationDrawable animationDrawable = (AnimationDrawable) view.getBackground();
         animationDrawable.setEnterFadeDuration(2000);
         animationDrawable.setExitFadeDuration(4000);
         animationDrawable.start();
 
-//        database = FirebaseDatabase.getInstance();
+
 //        myRef = database.getReference("item");
 
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-//        sign_out = (Button)findViewById(R.id.sign_out);
+        sign_out = (Button)findViewById(R.id.logout_button);
+        log_in = (Button)findViewById(R.id.login_button);
 //        edit_data_FB = (EditText)findViewById(R.id.edit_data_FB);
 //        text_get = (TextView)findViewById(R.id.text_get);
 //        test_send = (Button)findViewById(R.id.test_send);
 //        test_get = (Button)findViewById(R.id.test_get);
 //        img = (ImageView)findViewById(R.id.imageView2);
+        numberOfKanji = (TextView)findViewById(R.id.number_of_kanji);
+        nameView = (TextView)findViewById(R.id.nameView);
 
-//        test = (Button)findViewById(R.id.logout_button);
+        test = (Button)findViewById(R.id.login_button);
         locationView = (TextView)findViewById(R.id.location_view);
 
         test.setOnClickListener(new View.OnClickListener() {
@@ -118,11 +124,11 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         //init providers
-//        providers = Arrays.asList(
-//                new AuthUI.IdpConfig.EmailBuilder().build(),
-//                new AuthUI.IdpConfig.PhoneBuilder().build(),
-//                new AuthUI.IdpConfig.GoogleBuilder().build()
-//        );
+        providers = Arrays.asList(
+                new AuthUI.IdpConfig.EmailBuilder().build(),
+                new AuthUI.IdpConfig.PhoneBuilder().build(),
+                new AuthUI.IdpConfig.GoogleBuilder().build()
+        );
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Профиль");
@@ -130,35 +136,35 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-//        if (user != null){
-//            Toast.makeText(this,"Вы вошли в аккаунт",Toast.LENGTH_SHORT).show();
-//            sign_out.setEnabled(true);
-//        }
-//        else
-//            {
-//                showSignInOptions();
-//            }
+        if (user != null){
+            sign_out.setEnabled(true);
+            setMaterials();
+        }
+        else
+            {
+                showSignInOptions();
+            }
 
-//        sign_out.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //Logout
-//                AuthUI.getInstance()
-//                        .signOut(ProfileActivity.this)
-//                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<Void> task) {
-//                                sign_out.setEnabled(false);
-//                                showSignInOptions();
-//                            }
-//                        }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(ProfileActivity.this,""+e.getMessage(),Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//            }
-//        });
+        sign_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout
+                AuthUI.getInstance()
+                        .signOut(ProfileActivity.this)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                sign_out.setEnabled(false);
+                                showSignInOptions();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(ProfileActivity.this,""+e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
 //
 //
 //        test_send.setOnClickListener(new View.OnClickListener() {
@@ -242,7 +248,7 @@ public class ProfileActivity extends AppCompatActivity {
                 // Получаем пользователя
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 // Показываем тост с Email
-                Toast.makeText(this,""+user.getEmail(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Успешно авторизованы под почтой "+user.getEmail(),Toast.LENGTH_SHORT).show();
                 //Изменяем кнопку sign_out
                 sign_out.setEnabled(true);
 
@@ -370,5 +376,39 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         return country;
+    }
+
+    public void setMaterials(){
+        String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        final DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+
+        current_user_db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long testData = dataSnapshot.child("testData").getValue(long.class);
+                //text_get.setText(testData);
+                longData = testData;
+                numberOfKanji.setText(String.valueOf(longData));
+                if (FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber() != null) {
+                    displayPhone = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
+                }
+                if (FirebaseAuth.getInstance().getCurrentUser().getDisplayName() != null){
+                   displayName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+                }
+//                text_get.setText(displayName);
+                //String photoUrl = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString();
+
+//                Glide.with(ProfileActivity.this)
+//                        .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
+//                        .into(img);
+                nameView.setText(displayName);
+
+            }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
     }
 }

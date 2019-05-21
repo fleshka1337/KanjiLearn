@@ -61,8 +61,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View view) {
 //////          textToSpeech.setPitch(0.002f);
 //////          textToSpeech.setSpeechRate(2.0f);
-                textToSpeech.setSpeechRate(1.0f);
+//                textToSpeech.setSpeechRate(1.0f);
 //              speak(mData.get(position).getKanaTTS());
+                textToSpeech.setSpeechRate(1.0f);
                 dataSpeak = mData.get(position).getKanaTTS().toString();
                 textToSpeech.speak(dataSpeak, TextToSpeech.QUEUE_FLUSH,null,null);
             }

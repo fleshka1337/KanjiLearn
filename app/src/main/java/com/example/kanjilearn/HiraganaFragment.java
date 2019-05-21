@@ -63,6 +63,49 @@ public class HiraganaFragment extends Fragment {
         lstCard.add(new Card("す","su","すう"));
         lstCard.add(new Card("せ","se","せえ"));
         lstCard.add(new Card("そ","so","そお"));
+        // 4 ряд
+        lstCard.add(new Card("た","ta","たあ"));
+        lstCard.add(new Card("ち","chi","ちい"));
+        lstCard.add(new Card("つ","tsu","つう"));
+        lstCard.add(new Card("て","te","てえ"));
+        lstCard.add(new Card("と","to","とお"));
+        // 5 ряд
+        lstCard.add(new Card("な","na","なあ"));
+        lstCard.add(new Card("に","ni","にい"));
+        lstCard.add(new Card("ぬ","nu","ぬう"));
+        lstCard.add(new Card("ね","ne","ねえ"));
+        lstCard.add(new Card("の","no","のお"));
+        // 6 ряд
+        lstCard.add(new Card("は","ha","はあ"));
+        lstCard.add(new Card("ひ","hi","ひい"));
+        lstCard.add(new Card("ふ","fu","ふう"));
+        lstCard.add(new Card("へ","he","へえ"));
+        lstCard.add(new Card("ほ","ho","ほお"));
+        // 7 ряд
+        lstCard.add(new Card("ま","ma","まあ"));
+        lstCard.add(new Card("み","mi","みい"));
+        lstCard.add(new Card("む","mu","むう"));
+        lstCard.add(new Card("め","me","めえ"));
+        lstCard.add(new Card("も","mo","もお"));
+        // 8 ряд
+        lstCard.add(new Card("や","ya","やあ"));
+        lstCard.add(new Card("","",""));
+        lstCard.add(new Card("ゆ","yu","ゆう"));
+        lstCard.add(new Card("","",""));
+        lstCard.add(new Card("よ","yo","よお"));
+        // 9 ряд
+        lstCard.add(new Card("ら","ra","らあ"));
+        lstCard.add(new Card("り","ri","りい"));
+        lstCard.add(new Card("る","ru","るう"));
+        lstCard.add(new Card("れ","re","れえ"));
+        lstCard.add(new Card("ろ","ro","ろお"));
+        // 10 ряд
+        lstCard.add(new Card("わ","wa","わあ"));
+        lstCard.add(new Card("","",""));
+        lstCard.add(new Card("を","(w)o","ヴぉお"));
+        lstCard.add(new Card("","",""));
+        lstCard.add(new Card("ん","n","えん"));
+
 
         RecyclerView myrv = (RecyclerView)view.findViewById(R.id.recyclerView_hiragana);
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getActivity(),lstCard);

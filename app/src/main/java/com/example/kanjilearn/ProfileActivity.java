@@ -5,6 +5,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.MenuItem;
@@ -53,7 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
     String test;
     String data, displayName;
     long longData;
-
+    
     private FirebaseDatabase database;
     private DatabaseReference myRef;
 

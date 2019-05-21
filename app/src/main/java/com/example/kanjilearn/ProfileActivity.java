@@ -55,7 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
     String test;
     String data, displayName;
     long longData;
-    
+
     private FirebaseDatabase database;
     private DatabaseReference myRef;
 
@@ -84,7 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
 //        );
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Profile_activity");
+        actionBar.setTitle("Профиль");
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

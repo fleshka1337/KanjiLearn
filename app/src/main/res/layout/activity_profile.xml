@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
+
     <View
         android:layout_width="match_parent"
         android:layout_height="210dp"
@@ -40,6 +41,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <androidx.cardview.widget.CardView
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="85dp"
@@ -66,7 +68,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Full stack developer, Android UI"
+                                android:text="Добро пожаловать в ваш профиль!"
                                 android:textSize="17sp"
                                 android:layout_marginTop="10dp"
                                 android:layout_gravity="center_horizontal"/>
@@ -74,17 +76,17 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="I love fantastic things, colors and good design. I create the software that makes lives better. Thanks"
+                                android:text="Номер телефона - \n Email - "
                                 android:textAlignment="center"
                                 android:textStyle="italic"
                                 android:textSize="18sp"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="15dp"
                                 android:layout_gravity="center_horizontal"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Khabarovsk, Russia"
+                                android:text="Хабаровск, Россия"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_marginTop="10dp"
@@ -109,10 +111,11 @@
                             android:layout_weight="1">
 
                             <TextView
+                                android:id="@+id/number_of_kanji"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="9.8"
+                                android:text="0"
                                 android:textStyle="bold"
                                 android:textSize="35sp"/>
 
@@ -120,8 +123,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="raiting"
-                                android:textSize="20sp"/>
+                                android:text="Просмотрено кандзи"
+                                android:textSize="20sp"
+                                android:gravity="center"/>
 
                         </LinearLayout>
 
@@ -136,7 +140,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="2"
+                                android:text="2.1"
                                 android:textStyle="bold"
                                 android:textSize="35sp"/>
 
@@ -144,7 +148,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="projects"
+                                android:text="Активность"
                                 android:textSize="20sp"/>
 
                         </LinearLayout>
@@ -160,6 +164,7 @@
                         android:weightSum="2">
 
                         <Button
+                            android:id="@+id/login_button"
                             android:layout_width="125dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -167,9 +172,10 @@
                             android:layout_marginRight="10dp"
                             android:textColor="@color/Grey"
                             android:background="@drawable/element_outline"
-                            android:text="Button_1"/>
+                            android:text="Вход"/>
 
                         <Button
+                            android:id="@+id/logout_button"
                             android:layout_width="125dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -177,7 +183,7 @@
                             android:layout_marginRight="10dp"
                             android:textColor="@color/colorAccent2"
                             android:background="@drawable/element_outline1"
-                            android:text="Button_2"/>
+                            android:text="Выход"/>
 
                     </LinearLayout>
 

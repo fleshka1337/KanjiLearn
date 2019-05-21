@@ -6,7 +6,6 @@ public class Card {
     private String KanaRead;
 
     public Card (){
-
     }
 
     public Card (String kana, String kanaRead){

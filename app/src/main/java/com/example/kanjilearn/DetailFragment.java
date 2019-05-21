@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -35,6 +39,10 @@ public class DetailFragment extends Fragment {
     DataCommunication mCallback;
 
     private WebView webView;
+
+    TextToSpeech textToSpeech;
+    private Context mContext;
+    String dataSpeak;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -55,6 +63,30 @@ public class DetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
+
+        FloatingActionButton floatingActionButton = (FloatingActionButton)view.findViewById(R.id.fab_1);
+
+        textToSpeech = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR)
+                    textToSpeech.setLanguage(Locale.JAPANESE);
+            }
+        });
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//////          textToSpeech.setPitch(0.002f);
+//////          textToSpeech.setSpeechRate(2.0f);
+//                textToSpeech.setSpeechRate(1.0f);
+//              speak(mData.get(position).getKanaTTS());
+                textToSpeech.setSpeechRate(1.0f);
+                dataSpeak = mCallback.getMyVariableX().toString();
+                textToSpeech.speak(dataSpeak, TextToSpeech.QUEUE_FLUSH,null,null);
+            }
+        });
+
         // Inflate the layout for this fragment
 
 //        Bundle bundle = this.getArguments();
@@ -65,6 +97,7 @@ public class DetailFragment extends Fragment {
         webView = (WebView)view.findViewById(R.id.webView);
         WebSettings webSettings = webView.getSettings();
         webView.clearCache(true);
+
 
 //        ImageView myImage = (ImageView) view.findViewById(R.id.imageView2);
 //        myImage.setAlpha(55); //value: [0-255]. Where 0 is fully transparent and 255 is fully opaque

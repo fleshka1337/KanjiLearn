@@ -45,19 +45,19 @@ public class HiraganaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_hiragana, container, false);
 
         lstCard = new ArrayList<>();
-
+        // 1 ряд
         lstCard.add(new Card("あ","a","ああ"));
         lstCard.add(new Card("い","i","いい"));
         lstCard.add(new Card("う","u","うう"));
         lstCard.add(new Card("え","e","ええ"));
         lstCard.add(new Card("お","o","おお"));
-
+        // 2 ряд
         lstCard.add(new Card("か","ka","かあ"));
         lstCard.add(new Card("き","ki","きい"));
         lstCard.add(new Card("く","ku","くう"));
         lstCard.add(new Card("け","ke","けえ"));
         lstCard.add(new Card("こ","ko","こお"));
-
+        // 3 ряд
         lstCard.add(new Card("さ","sa","さあ"));
         lstCard.add(new Card("し","shi","しい"));
         lstCard.add(new Card("す","su","すう"));

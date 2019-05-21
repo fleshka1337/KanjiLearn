@@ -1,5 +1,7 @@
 package com.example.kanjilearn;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -7,6 +9,12 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.MenuItem;
@@ -33,26 +41,26 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity {
 
     private static final int MY_REQUEST_CODE = 9119;
     List<AuthUI.IdpConfig> providers;
-    Button    sign_out
-            , test_send
-            , test_get;
+    Button    sign_out, log_in, test;
 
     EditText edit_data_FB;
 
-    TextView text_get;
+    TextView text_get, locationView;
 
     ImageView img;
 
-    String test;
+    //String test;
     String data, displayName;
     long longData;
 
@@ -75,6 +83,31 @@ public class ProfileActivity extends AppCompatActivity {
 //        test_send = (Button)findViewById(R.id.test_send);
 //        test_get = (Button)findViewById(R.id.test_get);
 //        img = (ImageView)findViewById(R.id.imageView2);
+
+        test = (Button)findViewById(R.id.logout_button);
+        locationView = (TextView)findViewById(R.id.location_view);
+
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED){
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1000);
+                }else {
+                    LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+                    Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                    try {
+                        String city = hereLocation(location.getLatitude(), location.getLongitude());
+                        String country = hereLocationCountry(location.getLatitude(), location.getLongitude());
+                        locationView.setText(city+", "+country);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                        Toast.makeText(ProfileActivity.this, "Метоположение не найдено", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }
+        });
 
         //init providers
 //        providers = Arrays.asList(
@@ -263,5 +296,71 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case 1000: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED ){
+                    LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+                    Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                    try {
+                        String city = hereLocation(location.getLatitude(), location.getLongitude());
+                        String country = hereLocationCountry(location.getLatitude(), location.getLongitude());
+                        locationView.setText(city+", "+country);
+                    } catch (Exception e){
+                        e.printStackTrace();
+                        Toast.makeText(ProfileActivity.this, "Метоположение не найдено", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(this, "Вы не предоставили разрешение", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    private String hereLocation(double lat, double lon){
+        String cityName = "";
+
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        List<Address> addresses;
+        try {
+            addresses = geocoder.getFromLocation(lat,lon,10);
+            if (addresses.size() > 0){
+                for (Address adr: addresses){
+                    if (adr.getLocality() != null && adr.getLocality().length() > 0){
+                        cityName = adr.getLocality();
+                        break;
+                    }
+                }
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return cityName;
+    }
+
+    private String hereLocationCountry(double lat, double lon){
+        String country = "";
+
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        List<Address> addresses;
+        try {
+            addresses = geocoder.getFromLocation(lat,lon,10);
+            if (addresses.size() > 0){
+                for (Address adr: addresses){
+                    if (adr.getLocality() != null && adr.getLocality().length() > 0){
+                        country  = adr.getCountryName();
+                        break;
+                    }
+                }
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return country;
     }
 }

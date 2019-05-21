@@ -9,9 +9,10 @@
 
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="210dp"
-        android:background="@color/colorPrimary"/>
+        android:background="@drawable/gradient_list"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -87,7 +88,7 @@
                                 android:id="@+id/location_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="0"
+                                android:text="NA"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 android:layout_marginTop="10dp"

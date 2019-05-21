@@ -8,8 +8,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.pm.PackageManager;
+import android.graphics.drawable.AnimationDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -72,6 +74,12 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        View view = findViewById(R.id.view);
+        AnimationDrawable animationDrawable = (AnimationDrawable) view.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
+
 //        database = FirebaseDatabase.getInstance();
 //        myRef = database.getReference("item");
 
@@ -84,7 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
 //        test_get = (Button)findViewById(R.id.test_get);
 //        img = (ImageView)findViewById(R.id.imageView2);
 
-        test = (Button)findViewById(R.id.logout_button);
+//        test = (Button)findViewById(R.id.logout_button);
         locationView = (TextView)findViewById(R.id.location_view);
 
         test.setOnClickListener(new View.OnClickListener() {

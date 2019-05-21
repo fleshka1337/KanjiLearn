@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
     BookmarkFragment bookmarkFragment;
     DetailFragment detailFragment;
     ProfileFragment profileFragment;
+    HiraganaFragment hiraganaFragment;
 
     EditText edit_search;
     DataCommunication mCallback;
@@ -222,6 +223,11 @@ public class MainActivity extends AppCompatActivity
                         .commit();
                 break;
             case R.id.nav_hiragana:
+                selectedFragment = new HiraganaFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
+                        addToBackStack(null).show(selectedFragment)
+                        .detach(selectedFragment).attach(selectedFragment)
+                        .commit();
                 Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);
                 break;
             case R.id.nav_katakana:

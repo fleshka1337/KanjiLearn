@@ -4,6 +4,7 @@ package com.example.kanjilearn;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -34,6 +35,8 @@ public class HiraganaFragment extends Fragment {
 
     List<Card> lstCard;
 
+    CardView hiraganaCard;
+
     public HiraganaFragment() {
 
     }
@@ -44,6 +47,9 @@ public class HiraganaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_hiragana, container, false);
+
+        hiraganaCard = (CardView)view.findViewById(R.id.hiragana_card);
+        hiraganaCard.setFocusableInTouchMode(true);
 
         lstCard = new ArrayList<>();
         // 1 ряд

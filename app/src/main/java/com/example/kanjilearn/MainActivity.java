@@ -235,7 +235,11 @@ public class MainActivity extends AppCompatActivity
                         .commit();
                 break;
             case R.id.nav_katakana:
-                Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);
+                selectedFragment = new KatakanaFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
+                        addToBackStack(null).show(selectedFragment)
+                        .detach(selectedFragment).attach(selectedFragment)
+                        .commit();
                 break;
             case R.id.nav_profile:
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));

@@ -83,7 +83,7 @@ public class DetailFragment extends Fragment {
 //              speak(mData.get(position).getKanaTTS());
                 textToSpeech.setSpeechRate(1.0f);
                 dataSpeak = mCallback.getMyVariableX().toString();
-                textToSpeech.speak(dataSpeak, TextToSpeech.QUEUE_FLUSH,null,null);
+                textToSpeech.speak(dataSpeak, TextToSpeech.QUEUE_FLUSH,null,null);  // ー - продление звука
             }
         });
 

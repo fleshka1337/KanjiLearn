@@ -233,7 +233,6 @@ public class MainActivity extends AppCompatActivity
                         addToBackStack(null).show(selectedFragment)
                         .detach(selectedFragment).attach(selectedFragment)
                         .commit();
-                Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);
                 break;
             case R.id.nav_katakana:
                 Toast.makeText(this,"Этот раздел не ещё не создан",Toast.LENGTH_LONG);

@@ -393,6 +393,7 @@ public class ProfileActivity extends AppCompatActivity {
                 //text_get.setText(testData);
                 longData = testData;
                 numberOfKanji.setText(String.valueOf(longData));
+
                 if (FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber() != null) {
                     displayPhone = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
                 } else {

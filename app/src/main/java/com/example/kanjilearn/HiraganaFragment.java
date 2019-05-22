@@ -4,6 +4,7 @@ package com.example.kanjilearn;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -111,6 +112,8 @@ public class HiraganaFragment extends Fragment {
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getActivity(),lstCard);
         myrv.setLayoutManager(new GridLayoutManager(getActivity(),5));
         myrv.setAdapter(myAdapter);
+
+        myrv.setNestedScrollingEnabled(false);
 
 //
 //        //Init text to speech

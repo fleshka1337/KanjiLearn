@@ -29,6 +29,8 @@ import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -75,9 +77,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        // Защита от краша при отсутствии авторизации
-        FirebaseUser user_check = FirebaseAuth.getInstance().getCurrentUser();
 
         dictionaryFragment = new DictionaryFragment();
         bookmarkFragment = new BookmarkFragment();

@@ -12,6 +12,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class SplashScreen extends AppCompatActivity {
 
     public static int TIME_OUT = 1600;
@@ -34,6 +39,16 @@ public class SplashScreen extends AppCompatActivity {
         textView.startAnimation(animation);
         progressBar.startAnimation(animation);
         imageView.startAnimation(animation);
+
+        // Защита от краша при отсутствии авторизации
+        FirebaseUser user_check = FirebaseAuth.getInstance().getCurrentUser();
+        if (user_check != null) {
+
+            // Счетчик просмотренных иероглифов, с добавлением данных в Firebase
+            String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+            current_user_db.child("testData");
+        }
 
         if (Build.VERSION.SDK_INT >= 21) {
             //Статус бар - вверху

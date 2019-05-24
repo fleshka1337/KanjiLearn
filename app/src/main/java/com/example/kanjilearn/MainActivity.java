@@ -6,6 +6,8 @@ import android.content.res.Configuration;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.navigation.NavigationView;
@@ -22,7 +24,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import androidx.fragment.app.FragmentManager;
 
+import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.getkeepsafe.taptargetview.TapTarget;
@@ -77,6 +81,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View hView =  navigationView.getHeaderView(0);
+
+        LinearLayout linearLayout =(LinearLayout) hView.findViewById(R.id.nav_header_gradient);
+        AnimationDrawable animationDrawable = (AnimationDrawable) linearLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
 
         dictionaryFragment = new DictionaryFragment();
         bookmarkFragment = new BookmarkFragment();

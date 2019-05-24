@@ -80,6 +80,7 @@ public class ProfileActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         View view = findViewById(R.id.view);
+
         AnimationDrawable animationDrawable = (AnimationDrawable) view.getBackground();
         animationDrawable.setEnterFadeDuration(2000);
         animationDrawable.setExitFadeDuration(4000);

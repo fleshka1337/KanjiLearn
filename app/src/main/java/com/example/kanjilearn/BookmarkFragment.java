@@ -41,19 +41,6 @@ public class BookmarkFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button myButton = (Button)view.findViewById(R.id.myBtn);
-
-
-        myButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                FragmentManager manager = getFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                transaction.replace(R.id.fragment_container, new DetailFragment()).addToBackStack(null);
-                transaction.commit();
-            }
-        });
     }
 
     @Override

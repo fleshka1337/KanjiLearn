@@ -64,14 +64,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -110,76 +102,6 @@ public class MainActivity extends AppCompatActivity
 //                TapTarget.forView(findViewById(R.id.edit_search_dict), "Поиск", "Вы можете искать кандзи в этом поле (ромадзи, кунъёми, онъёми, кандзи)")
 //                .tintTarget(false));
 
-
-//        edit_search = findViewById(R.id.edit_search);
-//        edit_search.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                dictionaryFragment.filterValue(charSequence.toString());
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
-
-//        dictionaryFragment.setOnFragmentListener(new FragmentListener() {
-//            @Override
-//            public void onItemClick(String value) {
-//                Toast.makeText(MainActivity.this, value, Toast.LENGTH_SHORT).show();
-//                Fragment selectedFragment = null;
-//                selectedFragment = new DetailFragment();
-//                getSupportFragmentManager().beginTransaction().
-//                        replace(R.id.fragment_container, ((DetailFragment) selectedFragment).getNewInstance(value)).
-//                        addToBackStack(null).
-//                        detach(selectedFragment).attach(selectedFragment).commit();
-//
-//                //new DetailFragment();
-//                //goToFragment(new DetailFragment(), false);
-//                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, detailFragment).commit();
-//
-//            }
-//        });
-//
-//        bookmarkFragment.setOnFragmentListener(new FragmentListener() {
-//            @Override
-//            public void onItemClick(String value) {
-//                Toast.makeText(MainActivity.this, value, Toast.LENGTH_SHORT).show();
-//
-//                Fragment selectedFragment = null;
-//                selectedFragment = new DetailFragment();
-//
-//                getSupportFragmentManager().beginTransaction().
-//                        replace(R.id.fragment_container, ((DetailFragment) selectedFragment).getNewInstance(value)).
-//                        addToBackStack(null).
-//                        detach(selectedFragment).attach(selectedFragment).commit();
-//
-//                //new DetailFragment();
-//                //goToFragment(new DetailFragment(), false);
-//            }
-//        });
-
-//        dictionaryFragment.setOnFragmentListener(new FragmentListener() {
-//            @Override
-//            public void onItemClick(String value) {
-//                Toast.makeText(MainActivity.this,value,Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//        bookmarkFragment.setOnFragmentListener(new FragmentListener() {
-//            @Override
-//            public void onItemClick(String value) {
-//                Toast.makeText(MainActivity.this,value,Toast.LENGTH_LONG).show();
-//            }
-//        });
-//        edit_search = (EditText)findViewById(R.id.edit_search);
-//        edit_search.addTextChangedListener(this);
     }
 
     @Override
@@ -196,20 +118,12 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
 
-//        String id = Global.getState(this, "menu_type");
-//        if (id != null)
-//            onOptionsItemSelected(menu.findItem(Integer.valueOf(id)));
-
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        //Global.saveState(this, "menu_type", String.valueOf(id));
-
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -220,7 +134,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        // Reload current fragment
+        // Присваивает фрагмент = 0
         Fragment selectedFragment = null;
 
         switch (item.getItemId()){
@@ -261,12 +175,6 @@ public class MainActivity extends AppCompatActivity
 //                addToBackStack(null).show(selectedFragment)
 //                .detach(selectedFragment).attach(selectedFragment)
 //                .commit();
-
-//        if (id == R.id.nav_kanji){
-//            goToFragment(dictionaryFragment, false);
-//        } else if (id == R.id.nav_bookmark){
-//            goToFragment(bookmarkFragment,false);
-//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

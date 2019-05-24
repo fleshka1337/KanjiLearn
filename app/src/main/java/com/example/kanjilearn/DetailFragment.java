@@ -47,7 +47,7 @@ public class DetailFragment extends Fragment {
     public DetailFragment() {
         // Required empty public constructor
     }
-    
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

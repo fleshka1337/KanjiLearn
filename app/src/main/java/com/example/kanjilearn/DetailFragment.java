@@ -47,12 +47,7 @@ public class DetailFragment extends Fragment {
     public DetailFragment() {
         // Required empty public constructor
     }
-
-//    public static DetailFragment getNewInstance(String value){
-//        DetailFragment fragment = new DetailFragment();
-//        fragment.value = value;
-//        return fragment;
-//    }
+    
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,13 +82,7 @@ public class DetailFragment extends Fragment {
             }
         });
 
-        // Inflate the layout for this fragment
 
-//        Bundle bundle = this.getArguments();
-//        if (bundle != null){
-//            String kanji = bundle.getString("kanji");
-//            Toast.makeText(getContext(),kanji,Toast.LENGTH_LONG).show();
-//        }
         webView = (WebView)view.findViewById(R.id.webView);
         WebSettings webSettings = webView.getSettings();
         webView.clearCache(true);
@@ -151,6 +140,7 @@ public class DetailFragment extends Fragment {
                     });
                 }
             }
+
         });
 
 
@@ -178,13 +168,6 @@ public class DetailFragment extends Fragment {
 
         String test = mCallback.getMyVariableX();
         Toast.makeText(getContext(),"Вы просматриваете - "+test,Toast.LENGTH_LONG).show();
-
-//        Bundle b = this.getArguments();
-//        if (b != null){
-//            String s = b.getString("Key");
-//            Toast.makeText(getContext(),s,Toast.LENGTH_LONG).show();
-//        }
-//        Toast.makeText(getContext(),this.value,Toast.LENGTH_SHORT).show();
     }
 
     @Override

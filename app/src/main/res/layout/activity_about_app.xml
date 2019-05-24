@@ -8,6 +8,13 @@
     tools:context=".AboutApp"
     android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_profile"
         android:layout_width="150dp"
@@ -57,6 +64,7 @@
         android:layout_marginTop="35dp"
         android:text="2018 - 2019гг."
         android:textSize="16sp"/>
-
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

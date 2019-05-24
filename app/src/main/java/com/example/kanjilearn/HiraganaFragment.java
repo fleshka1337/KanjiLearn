@@ -113,7 +113,6 @@ public class HiraganaFragment extends Fragment {
         lstCard.add(new Card("","",""));
         lstCard.add(new Card("ん","n","えん"));
 
-
         RecyclerView myrv = (RecyclerView)view.findViewById(R.id.recyclerView_hiragana);
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(getActivity(),lstCard);
         myrv.setLayoutManager(new GridLayoutManager(getActivity(),5));

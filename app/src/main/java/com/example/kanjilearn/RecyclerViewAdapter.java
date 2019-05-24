@@ -47,7 +47,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.card_Title.setText(mData.get(position).getKanaRead());
         holder.card_Kana.setText(mData.get(position).getKana());
 
-                //Init text to speech
+                // Text to speech
         textToSpeech = new TextToSpeech(mContext, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {

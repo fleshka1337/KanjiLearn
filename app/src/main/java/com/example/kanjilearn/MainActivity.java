@@ -196,6 +196,16 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_profile:
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                 break;
+            case R.id.nav_share:
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String shareBody = "Привет, друг! \nХочу познакомить тебя с приложением KanjiLearn. С его помощью ты сможешь выучить базовые иероглифы и слова, а ещё хирагану и катакану.\n \"Ссылка на приложение в Google Play store. Очень скоро\"";
+                String shareSub = "KanjiLearn!";
+                myIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+                myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+                startActivity(Intent.createChooser(myIntent, "Поделиться с помощью..."));
+
+                break;
 
         }
 //        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).

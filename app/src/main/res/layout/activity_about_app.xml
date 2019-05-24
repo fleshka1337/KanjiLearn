@@ -3,37 +3,51 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AboutApp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/about_app_linear">
 
-    <ScrollView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        app:cardCornerRadius="12dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_profile"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="98dp"
+        android:layout_height="98dp"
         android:src="@mipmap/ic_launcher_round"
         android:layout_centerHorizontal="true"
         android:elevation="1dp"
         app:civ_border_width="4dp"
         app:civ_border_color="@color/Grey"
         android:layout_gravity="center"
-        android:layout_marginTop="55dp"/>
+        android:layout_marginTop="35dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:text="@string/nav_header_title"
-        android:textSize="35sp"/>
+        android:textSize="26sp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,7 +58,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="Kanji Learn - это простой электронный словарь, для изучения японского языка."
-        android:textSize="24sp"/>
+        android:textSize="18sp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -64,7 +78,9 @@
         android:layout_marginTop="35dp"
         android:text="2018 - 2019гг."
         android:textSize="16sp"/>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
         </LinearLayout>
-    </ScrollView>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

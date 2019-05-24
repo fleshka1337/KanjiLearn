@@ -17,6 +17,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.codemybrainsout.ratingdialog.RatingDialog;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -129,6 +130,9 @@ public class MainActivity extends AppCompatActivity
 //                TapTarget.forView(findViewById(R.id.edit_search_dict), "Поиск", "Вы можете искать кандзи в этом поле (ромадзи, кунъёми, онъёми, кандзи)")
 //                .tintTarget(false));
 
+
+
+
     }
 
     @Override
@@ -204,6 +208,10 @@ public class MainActivity extends AppCompatActivity
                 myIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
                 myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
                 startActivity(Intent.createChooser(myIntent, "Поделиться с помощью..."));
+
+                break;
+            case R.id.nav_rate:
+
 
                 break;
 

@@ -48,6 +48,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity
@@ -329,18 +331,33 @@ public class MainActivity extends AppCompatActivity
     public void setMaterials(){
         String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
         final DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
-
         current_user_db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                long testData = dataSnapshot.child("testData").getValue(long.class);
-                //text_get.setText(testData);
+                String user_id_44 = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                DatabaseReference current_user_db_44 = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id_44);
+                current_user_db_44.child("testData");
+                        if (dataSnapshot.getValue() == null) {
+                            String user_id_2 = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            DatabaseReference user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id_2);
 
-                if (FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null){
-                    Glide.with(MainActivity.this)
-                            .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
-                            .into(img);
-                }
+                            user_db.child("testData");
+                            //Забиваем информацию
+                            Map newPost = new HashMap();
+                            newPost.put("testData",0);
+
+                            //Отправляем в Firebase
+                            user_db.setValue(newPost);
+                        } else {
+                            long testData = dataSnapshot.child("testData").getValue(long.class);
+                            //text_get.setText(testData);
+
+                            if (FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null) {
+                                Glide.with(MainActivity.this)
+                                        .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
+                                        .into(img);
+                            }
+                        }
 
             }
 

@@ -390,42 +390,57 @@ public class ProfileActivity extends AppCompatActivity {
         current_user_db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                long testData = dataSnapshot.child("testData").getValue(long.class);
-                //text_get.setText(testData);
-                longData = testData;
-                numberOfKanji.setText(String.valueOf(longData));
+                String user_id_44 = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                DatabaseReference current_user_db_44 = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id_44);
+                current_user_db_44.child("testData");
+                if (dataSnapshot.getValue() == null) {
+                    String user_id_2 = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    DatabaseReference user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id_2);
 
-                if (FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber() != null) {
-                    displayPhone = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
+                    user_db.child("testData");
+                    //Забиваем информацию
+                    Map newPost = new HashMap();
+                    newPost.put("testData",0);
+
+                    //Отправляем в Firebase
+                    user_db.setValue(newPost);
                 } else {
-                    displayPhone = "Не укакзано";
-                }
-                if (FirebaseAuth.getInstance().getCurrentUser().getDisplayName() != null){
-                   displayName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-                } else {
-                    displayName = "Не указано";
-                }
-                if (FirebaseAuth.getInstance().getCurrentUser().getEmail() != null){
-                    displayEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-                } else
-                {
-                    displayEmail = "Не указано";
-                }
-                if (FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null){
-                    Glide.with(ProfileActivity.this)
-                            .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
-                            .into(img);
-                }
+                    long testData = dataSnapshot.child("testData").getValue(long.class);
+                    //text_get.setText(testData);
+                    longData = testData;
+                    numberOfKanji.setText(String.valueOf(longData));
+
+                    if (FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber() != null) {
+                        displayPhone = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
+                    } else {
+                        displayPhone = "Не укакзано";
+                    }
+                    if (FirebaseAuth.getInstance().getCurrentUser().getDisplayName() != null) {
+                        displayName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+                    } else {
+                        displayName = "Не указано";
+                    }
+                    if (FirebaseAuth.getInstance().getCurrentUser().getEmail() != null) {
+                        displayEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                    } else {
+                        displayEmail = "Не указано";
+                    }
+                    if (FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null) {
+                        Glide.with(ProfileActivity.this)
+                                .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
+                                .into(img);
+                    }
 //                text_get.setText(displayName);
-                //String photoUrl = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString();
+                    //String photoUrl = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString();
 
 //                Glide.with(ProfileActivity.this)
 //                        .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString())
 //                        .into(img);
 
-                userInformation.setText("Номер телефона - "+displayPhone+"\n Email - "+displayEmail);
-                yourProfile.setText("Ваш профиль");
-                nameView.setText(displayName);
+                    userInformation.setText("Номер телефона - " + displayPhone + "\n Email - " + displayEmail);
+                    yourProfile.setText("Ваш профиль");
+                    nameView.setText(displayName);
+                }
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
                         != PackageManager.PERMISSION_GRANTED){

@@ -17,7 +17,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.codemybrainsout.ratingdialog.RatingDialog;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -208,12 +207,11 @@ public class MainActivity extends AppCompatActivity
                 myIntent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
                 myIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
                 startActivity(Intent.createChooser(myIntent, "Поделиться с помощью..."));
-
                 break;
-            case R.id.nav_rate:
-
-
+            case R.id.nav_help:
+                startActivity(new Intent(MainActivity.this, AboutApp.class));
                 break;
+
 
         }
 //        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).
